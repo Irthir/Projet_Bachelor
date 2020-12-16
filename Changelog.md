@@ -1,3 +1,7 @@
+## [0.0.5] - 2020-12-16
+### Changement
+-Finalisation de la première version du cahier des charges.
+
 ## [0.0.4] - 2020-12-14
 ### Changement
 -Révision de la note de cadrage.
