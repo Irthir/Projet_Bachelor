@@ -1,3 +1,8 @@
+## [0.0.6] - 2021-02-14
+### Changement
+-Mise à jour du Game Concept
+-Mise à jour du plannning.
+
 ## [0.0.5] - 2020-12-16
 ### Changement
 -Finalisation de la première version du cahier des charges.
