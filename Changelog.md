@@ -2,6 +2,8 @@
 ### Changement
 -Mise à jour du Game Concept
 -Mise à jour du plannning.
+### Ajout
+-Début des idées et notes de Game Design.
 
 ## [0.0.5] - 2020-12-16
 ### Changement
