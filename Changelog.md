@@ -1,3 +1,8 @@
+## [0.0.7] - 2021-02-27
+### Ajout
+-Mise en place des déplacements du joueur.
+-Mise en place des limites de déplacements du joueur.
+
 ## [0.0.6] - 2021-02-14
 ### Changement
 -Mise à jour du Game Concept
