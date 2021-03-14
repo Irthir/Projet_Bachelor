@@ -2,6 +2,7 @@
 ### Ajout
 -Mise en place des tirs.
 -Mise en place de la destruction des objets qui quittent la zone de jeu.
+-Ajout d'un ennemi simple qui va de haut en bas.
 
 ## [0.0.7] - 2021-02-27
 ### Ajout
