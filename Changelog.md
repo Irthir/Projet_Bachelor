@@ -1,3 +1,8 @@
+## [0.0.8] - 2021-02-27
+### Ajout
+-Mise en place des tirs.
+-Mise en place de la destruction des objets qui quittent la zone de jeu.
+
 ## [0.0.7] - 2021-02-27
 ### Ajout
 -Mise en place des déplacements du joueur.
