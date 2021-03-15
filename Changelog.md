@@ -1,4 +1,10 @@
-## [0.0.8] - 2021-02-27
+## [0.0.9] - 2021-03-15
+### Ajout
+-Conceptualisation des contrôles.
+-Conceptualisation des différents éléments.
+-Conceptualisation du personnage joueur.
+
+## [0.0.8] - 2021-03-14
 ### Ajout
 -Mise en place des tirs.
 -Mise en place de la destruction des objets qui quittent la zone de jeu.
