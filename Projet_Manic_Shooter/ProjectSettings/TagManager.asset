@@ -4,9 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Boundary
-  - Joueur
-  - Magie
+  - Arcane
+  - Bois
+  - Terre
+  - Feu
+  - Divin
   layers:
   - Default
   - TransparentFX
@@ -15,11 +17,11 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Joueur
+  - Ennemi
+  - Danmaku
+  - Magie
+  - Bord
   - 
   - 
   - 

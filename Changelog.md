@@ -1,3 +1,15 @@
+## [0.0.9.1] - 2021-04-06
+### Ajout
+-Ajout du Minuteur pour la gestion des objets avec le temps.
+-Gestion de la trajectoire.
+-Conceptualisation du système de trajectoire.
+-Conceptualisation du système de collision.
+-Conceptualisation de l'application des éléments à la collision.
+-Conceptualisation du système de Layers.
+-Limitation des collisions par rapport aux Layers.
+-Conceptualisation du système de motif.
+-Conceptualisation du système de destruction des ennemis.
+
 ## [0.0.9] - 2021-03-15
 ### Ajout
 -Conceptualisation des contrôles.

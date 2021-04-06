@@ -123,6 +123,49 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &33279471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 33279473}
+  - component: {fileID: 33279472}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &33279472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33279471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81e6fa10247add448529ecb214f7bf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &33279473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33279471}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.47861415, y: 1.4096327, z: -0.01751709}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &120252664
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,9 +213,9 @@ GameObject:
   - component: {fileID: 214254946}
   - component: {fileID: 214254942}
   - component: {fileID: 214254947}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Joueur
-  m_TagString: Joueur
+  m_TagString: Arcane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -290,8 +333,8 @@ MonoBehaviour:
     xMax: 0
     yMin: 0
     yMax: 0
-  rb: {fileID: 0}
-  shot: {fileID: 5721089866574996933, guid: 4b2ae4f367dd086478f2ce4bf83a692b, type: 3}
+  rb: {fileID: 214254946}
+  shot: {fileID: 4309648928995440494, guid: 1cca9c81990351a41a8a1d783bd06cef, type: 3}
   shotSpawn: {fileID: 911452760}
 --- !u!1 &683537892
 GameObject:
@@ -304,7 +347,7 @@ GameObject:
   - component: {fileID: 683537893}
   - component: {fileID: 683537895}
   - component: {fileID: 683537894}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collisionneur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,9 +521,9 @@ GameObject:
   - component: {fileID: 857587533}
   - component: {fileID: 857587530}
   - component: {fileID: 857587534}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Boundary
-  m_TagString: Boundary
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533,7 +576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 911452760}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shot Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -741,7 +784,7 @@ GameObject:
   - component: {fileID: 1099573224}
   - component: {fileID: 1099573226}
   - component: {fileID: 1099573225}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Apparence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -996,11 +1039,11 @@ GameObject:
   - component: {fileID: 1803556616}
   - component: {fileID: 1803556619}
   - component: {fileID: 1803556618}
-  - component: {fileID: 1803556617}
   - component: {fileID: 1803556620}
-  m_Layer: 0
+  - component: {fileID: 1803556617}
+  m_Layer: 8
   m_Name: Ennemi
-  m_TagString: Untagged
+  m_TagString: Bois
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1013,7 +1056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803556615}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: 0}
+  m_LocalPosition: {x: 3, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1099573224}
@@ -1029,9 +1072,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1803556615}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b40a5c26cf2796c42a8f8cebe5837ab5, type: 3}
+  m_Script: {fileID: 11500000, guid: dc585eb9c9d7f2f45bf8989f646607e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  c_Minuteur: {fileID: 33279472}
+  c_Trajectoire: {fileID: 1803556620}
+  Apparence: {fileID: 1099573223}
+  Collider: {fileID: 1803556618}
+  n_Vie: 10
 --- !u!136 &1803556618
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1040,7 +1088,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803556615}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1
@@ -1071,7 +1119,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1803556615}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b14a3135583c371409c150862dabe43c, type: 3}
+  m_Script: {fileID: 11500000, guid: d7131b29dd9a2a64ea68329cd2de603b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  f_speed: -5
+  c_Minuteur: {fileID: 33279472}
+  f_vitesse: 1
+  f_rayon: 3
+  f_Ox: 0
+  f_Oy: 6
