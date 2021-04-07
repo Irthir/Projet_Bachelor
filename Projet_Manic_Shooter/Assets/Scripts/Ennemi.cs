@@ -5,8 +5,11 @@ using UnityEngine;
 public class Ennemi : MonoBehaviour
 {
     public Minuteur c_Minuteur = null;
+    public Compteur c_Compteur = null;
+
     public Trajectoire c_Trajectoire;
     public GameObject Apparence;
+    public GameObject Motif;
     public CapsuleCollider Collider;
     public int n_Vie = 10;
 
@@ -20,6 +23,13 @@ public class Ennemi : MonoBehaviour
         {
             c_Minuteur = GameObject.Find("GameManager").GetComponent<Minuteur>();
         }
+
+        if (c_Compteur == null)
+        {
+            c_Compteur = GameObject.Find("GameManager").GetComponent<Compteur>();
+        }
+
+        c_Compteur.AjouteEnnemi(gameObject);
     }
 
     // Update is called once per frame
@@ -72,6 +82,9 @@ public class Ennemi : MonoBehaviour
         c_Trajectoire.enabled = false;
         Collider.enabled = false;
         Apparence.SetActive(false);
+        Motif.SetActive(false);
+
+        c_Compteur.MortEnnemi(gameObject);
     }
 
     void Resurrection()
@@ -81,5 +94,8 @@ public class Ennemi : MonoBehaviour
         c_Trajectoire.enabled = true;
         Collider.enabled = true;
         Apparence.SetActive(true);
+        Motif.SetActive(true);
+
+        c_Compteur.AjouteEnnemi(gameObject);
     }
 }

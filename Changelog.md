@@ -1,3 +1,12 @@
+## [0.0.9.2] - 2021-04-07
+### Ajout
+-Création du système de motif.
+-Mise en place des inputs pc.
+-Système de tir du joueur.
+-Changement de mode de tir du joueur.
+-Ajout du mode concentration au joueur.
+-Ajout des lumières sur les tirs du joueur.
+
 ## [0.0.9.1] - 2021-04-06
 ### Ajout
 -Ajout du Minuteur pour la gestion des objets avec le temps.

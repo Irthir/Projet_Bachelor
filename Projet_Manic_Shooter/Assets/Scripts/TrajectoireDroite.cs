@@ -18,24 +18,19 @@ public class TrajectoireDroite : Trajectoire
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        double d_Temps = c_Minuteur.GetTemps();
-        float f_Temps = (float)d_Temps - (float)d_Naissance; //Le temps actuel de l'objet.
+        base.Update();
 
-        transform.position = MouvementDroite(f_Angle, v_Depart, f_vitesse, f_Temps);
+        transform.position = MouvementDroite(DegToRad(f_Angle), v_Depart, f_Vitesse, f_Temps);
     }
 
-    Vector3 MouvementDroite(float f_Angle,Vector3 v_Origine,float f_vitesse, float f_Temps)
+    Vector3 MouvementDroite(float f_Angle,Vector3 v_Origine,float f_Vitesse, float f_Temps)
     {
         Vector3 vecPosition;
 
-        f_Angle *= Mathf.PI / 180;
-
-        vecPosition.x = f_Temps * f_vitesse * Mathf.Cos(f_Angle) + v_Origine.x;
-        vecPosition.y = f_Temps * f_vitesse * Mathf.Sin(f_Angle) + v_Origine.y;
-
-        //Debug.Log("Origine X "+v_Origine.x+" Origine Y "+ v_Origine.y+" Cos(90) " + Mathf.Cos(f_Angle)+)
+        vecPosition.x = f_Temps * f_Vitesse * Mathf.Cos(f_Angle) + v_Origine.x;
+        vecPosition.y = f_Temps * f_Vitesse * Mathf.Sin(f_Angle) + v_Origine.y;
 
         vecPosition.z = 0.0f;
 
