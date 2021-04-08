@@ -26,7 +26,12 @@ public class Boundary
 public class PlayerController : MonoBehaviour
 {
     //Header
-    public float f_speed=10.0f;
+    private float f_speed=10.0f;
+    private float f_fireRate = 20.0f;
+    private float f_fireSpeed = 0.15f;
+
+    public float f_Vitesse = 10.0f;
+    public float f_Ralentissement = 7.0f;
     public float f_tilt=3.0f;
     public Boundary boundary;
     public Rigidbody rb; //rb parce qu'il n'y a qu'un seul Rigidbody par objet et que le nom rigidbody est déjà pris dans la hiérarchie.
@@ -35,12 +40,22 @@ public class PlayerController : MonoBehaviour
     public GameObject o_Arcane;
     public GameObject o_Bois;
     public GameObject o_Terre;
-    public float f_VitesseTir = 5.0f;
+    public float f_VitesseTir = 20.0f;
+    public float f_AugmentationVitesseTir=5.0f;
 
     public Transform[] MagicSpawns;
     
-    private float fireRate = 0.15f;
+    public float f_TauxTir = 0.15f;
+    public float f_AugmentationTauxTir;
     private float nextFire = 0.0f;
+
+    public bool b_Invincible = false;
+    public float f_TempsInvincible = 2.0f;
+    private double d_MomentInvincible = 0.0f;
+
+    public CompteursJoueur c_Compteur = null;
+
+    public Minuteur c_Minuteur = null;
 
     //Functions
 
@@ -49,6 +64,20 @@ public class PlayerController : MonoBehaviour
     {
         boundary.SetScreenBounds();
         rb = GetComponent<Rigidbody>();
+
+        if (c_Compteur == null)
+        {
+            c_Compteur = GameObject.Find("GameManager").GetComponent<CompteursJoueur>();
+        }
+
+        if (c_Minuteur == null)
+        {
+            c_Minuteur = GameObject.Find("GameManager").GetComponent<Minuteur>();
+        }
+
+        f_speed = f_Vitesse;
+        f_fireRate = f_TauxTir;
+        f_fireSpeed = f_VitesseTir;
     }
 
     // Update is called once per frame
@@ -56,7 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetButton("Fire1")&& Time.time>nextFire)
         {
-            nextFire = Time.time + fireRate;
+            nextFire = Time.time + f_fireRate;
             Tir();
         }
 
@@ -99,21 +128,30 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Concentration"))
         {
-            fireRate = 0.1f;
-            f_VitesseTir = 5.5f;
-            f_speed = 3.0f;
+            f_fireRate = f_TauxTir - f_AugmentationTauxTir;
+            f_fireSpeed =  f_VitesseTir + f_AugmentationVitesseTir;
+            f_speed = f_Vitesse - f_Ralentissement;
         }
 
         if (Input.GetButtonUp("Concentration"))
         {
-            fireRate = 0.15f;
-            f_VitesseTir = 5.0f;
-            f_speed = 10.0f;
+            f_fireRate = f_TauxTir;
+            f_fireSpeed = f_VitesseTir;
+            f_speed = f_Vitesse;
         }
 
         if (Input.GetButtonDown("Bombe"))
         {
             Bombe();
+        }
+
+        if (b_Invincible)
+        {
+            if (d_MomentInvincible+f_TempsInvincible<=c_Minuteur.GetTemps())
+            {
+                b_Invincible = false;
+                Debug.Log("Plus Invincible");
+            }
         }
     }
 
@@ -176,7 +214,7 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-            Arcane.GetComponent<TrajectoireDroite>().f_Vitesse = f_VitesseTir;
+            Arcane.GetComponent<TrajectoireDroite>().f_Vitesse = f_fireSpeed;
             Arcane.tag = "Arcane";
         }
     }
@@ -206,7 +244,7 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-            Feu.GetComponent<TrajectoireDroite>().f_Vitesse = f_VitesseTir;
+            Feu.GetComponent<TrajectoireDroite>().f_Vitesse = f_fireSpeed;
             Feu.tag = "Feu";
         }
     }
@@ -230,7 +268,7 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-            Bois.GetComponent<TrajectoireDroite>().f_Vitesse = f_VitesseTir;
+            Bois.GetComponent<TrajectoireDroite>().f_Vitesse = f_fireSpeed;
             Bois.tag = "Bois";
         }
     }
@@ -249,7 +287,7 @@ public class PlayerController : MonoBehaviour
             {
                 Terre.AddComponent<TrajectoireChercheEnnemi>();
             }
-            Terre.GetComponent<Trajectoire>().f_Vitesse = f_VitesseTir;
+            Terre.GetComponent<Trajectoire>().f_Vitesse = f_fireSpeed;
 
             Terre.tag = "Terre";
         }
@@ -257,6 +295,43 @@ public class PlayerController : MonoBehaviour
 
     void Bombe()
     {
-        Debug.Log("Bombe");
+        if (c_Compteur.n_Bombe>0 && !b_Invincible)
+        {
+            b_Invincible = true;
+            d_MomentInvincible = c_Minuteur.GetTemps();
+            Debug.Log("Invincible");
+
+            c_Compteur.ChangeBombe(-1);
+            Debug.Log("Bombe");
+            
+            GameObject[] Danmakus = FindGameObjectsInLayer(LayerMask.NameToLayer("Danmaku"));
+            
+            foreach (GameObject Danmaku in Danmakus)
+            {
+                Destroy(Danmaku);
+            }
+        }
+        else
+        {
+            Debug.Log("Plus de bombe restante.");
+        }
+    }
+
+    GameObject[] FindGameObjectsInLayer(int layer)
+    {
+        var goArray = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+        var goList = new System.Collections.Generic.List<GameObject>();
+        for (int i = 0; i < goArray.Length; i++)
+        {
+            if (goArray[i].layer == layer)
+            {
+                goList.Add(goArray[i]);
+            }
+        }
+        if (goList.Count == 0)
+        {
+            return null;
+        }
+        return goList.ToArray();
     }
 }

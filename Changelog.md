@@ -1,3 +1,14 @@
+## [0.0.9.3] - 2021-04-08
+### Modification
+-Augmentation de la vitesse de tir et de recharge.
+-Système de Concentration du Joueur côté code pour éviter un bug.
+###Ajout
+-Système de Bombe du Joueur.
+-Système d'absorption du Joueur.
+-Début de système de Score du Joueur.
+-Système de Frôlement du Joueur.
+-Début du document de conception de niveau.
+
 ## [0.0.9.2] - 2021-04-07
 ### Ajout
 -Création du système de motif.
