@@ -1,3 +1,7 @@
+## [0.0.9.4] - 2021-04-09
+### Modification
+-Finalisation du Document de conception du niveau 1.
+
 ## [0.0.9.3] - 2021-04-08
 ### Modification
 -Augmentation de la vitesse de tir et de recharge.
