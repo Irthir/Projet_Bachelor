@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Boundary
 {
+    public RectTransform rectTerrain=null;
     public float xMin, xMax, yMin, yMax;
     // Start is called before the first frame update
     /********************************************************\
@@ -14,12 +15,23 @@ public class Boundary
     \********************************************************/
     public void SetScreenBounds()
     {
-        Vector3 v_ScreenMaxBoundaries = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height,0));
+        if (rectTerrain == null)
+        {
+            rectTerrain = GameObject.Find("Terrain").GetComponent<RectTransform>();
+        }
+        Rect rect = rectTerrain.rect;
+
+        /*Vector3 v_ScreenMaxBoundaries = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height,0));
         Vector3 v_ScreenMinBoundaries = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width - Screen.width, Screen.height - Screen.height,0));
         xMax = v_ScreenMaxBoundaries.x;
         xMin = v_ScreenMinBoundaries.x;
         yMax = v_ScreenMaxBoundaries.y;
-        yMin = v_ScreenMinBoundaries.y;
+        yMin = v_ScreenMinBoundaries.y;*/
+
+        xMin = rect.xMin;
+        xMax = rect.xMax;
+        yMin = rect.yMin;
+        yMax = rect.yMax;
     }
 }
 

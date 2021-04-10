@@ -1,3 +1,9 @@
+## [0.0.9.5] - 2021-04-10
+### Modification
+-Réajustement de la zone de jeu.
+### Ajout
+-Préparation de l'interface de jeu.
+
 ## [0.0.9.4] - 2021-04-09
 ### Modification
 -Finalisation du Document de conception du niveau 1.
