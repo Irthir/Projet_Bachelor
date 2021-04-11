@@ -10,7 +10,7 @@ public class Minuteur : MonoBehaviour
     *   SORTIE : Une variable de Temps lisible pour les autres éléments en ayant besoin.
     \*********************************************************************************************************************/
 
-    private double d_Temps=0.0;
+    public  double d_Temps=0.0;
     private bool b_Actif = false;
 
     // Start is called before the first frame update
@@ -31,6 +31,11 @@ public class Minuteur : MonoBehaviour
     public double GetTemps()
     {
         return d_Temps;
+    }
+
+    public void SetTemps(double Temps)
+    {
+        d_Temps = Temps;
     }
 
     public void Pause()

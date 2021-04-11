@@ -8,7 +8,7 @@ public class Motif : MonoBehaviour
     public float f_Vitesse = 1f;
     protected double d_Naissance;
     protected Vector3 v_Depart;
-    
+
     public float f_Frequence;
     protected double d_Temps;
     protected float f_Temps;
@@ -35,11 +35,16 @@ public class Motif : MonoBehaviour
         d_Temps = c_Minuteur.GetTemps();
         f_Temps = (float)d_Temps - (float)d_Naissance; //Le temps actuel de l'objet.
 
-        if ((f_LastShot+f_Frequence) <= f_Temps)
+        if ((f_LastShot + f_Frequence) <= f_Temps)
         {
             f_LastShot = f_Temps;
             Spawn();
         }
+    }
+
+    public void RetourTemps()
+    {
+        f_LastShot = (float)c_Minuteur.GetTemps() - (float)d_Naissance;
     }
 
     protected virtual void Spawn()

@@ -15,6 +15,7 @@ public class Ennemi : MonoBehaviour
 
     private bool b_Vaincu = false;
     private double d_defaite;
+    private double d_naissance;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class Ennemi : MonoBehaviour
         }
 
         c_Compteur.AjouteEnnemi(gameObject);
+        d_naissance = c_Minuteur.GetTemps();
     }
 
     // Update is called once per frame
@@ -37,10 +39,19 @@ public class Ennemi : MonoBehaviour
     {
         if (b_Vaincu)
         {
-            if (c_Minuteur.GetTemps()>(5+d_defaite))
+            double d_Temps = c_Minuteur.GetTemps();
+           
+            if (d_Temps < d_naissance)
             {
-                //Destroy(gameObject);
+                Destroy(gameObject);
+            }
+            else if (d_Temps < d_defaite)
+            {
                 Resurrection();
+            }
+            else if(d_Temps > (6+d_defaite))
+            {
+                Destroy(gameObject);
             }
         }
     }
@@ -55,16 +66,11 @@ public class Ennemi : MonoBehaviour
                 string Attaque = gameObject.tag;
                 if ((Element == "Bois" && Attaque == "Feu") || (Element == "Terre" && Attaque == "Bois") || (Element == "Feu" && Attaque == "Terre"))
                 {
-                    n_Vie -= 2;
+                    InfligeDegats(2);
                 }
                 else
                 {
-                    n_Vie--;
-                }
-
-                if (n_Vie <= 0)
-                {
-                    Vaincu();
+                    InfligeDegats(1);
                 }
             }
 
@@ -72,9 +78,23 @@ public class Ennemi : MonoBehaviour
         }
     }
 
-
-    void Vaincu()
+    public void InfligeDegats(int n_degats)
     {
+        if (n_Vie>0)
+        {
+            n_Vie -= n_degats;
+
+            if (n_Vie <= 0)
+            {
+                Vaincu();
+            }
+        }
+    }
+
+
+    public void Vaincu()
+    {
+
         b_Vaincu = true;
 
         d_defaite = c_Minuteur.GetTemps();
@@ -83,6 +103,8 @@ public class Ennemi : MonoBehaviour
         Collider.enabled = false;
         Apparence.SetActive(false);
         Motif.SetActive(false);
+
+        n_Vie = 0;
 
         c_Compteur.MortEnnemi(gameObject);
     }
@@ -96,6 +118,17 @@ public class Ennemi : MonoBehaviour
         Apparence.SetActive(true);
         Motif.SetActive(true);
 
+        n_Vie = 1;
+
         c_Compteur.AjouteEnnemi(gameObject);
+
+        Motif[] motifs = GetComponentsInChildren<Motif>();
+        if(motifs.Length>0)
+        {
+            for (int i = 0; i < motifs.Length; i++)
+            {
+                motifs[i].RetourTemps();
+            }
+        }
     }
 }

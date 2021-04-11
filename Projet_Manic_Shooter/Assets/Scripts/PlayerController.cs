@@ -7,13 +7,14 @@ public class Boundary
 {
     public RectTransform rectTerrain=null;
     public float xMin, xMax, yMin, yMax;
-    // Start is called before the first frame update
+
+    public void SetScreenBounds()
     /********************************************************\
      * BUT      : Mettre en place les limites de l'écran.
      * ENTREE   : Les limites de ce que voit la caméra.
      * SORTIE   : Les limites de l'écran stockées.
     \********************************************************/
-    public void SetScreenBounds()
+
     {
         if (rectTerrain == null)
         {
@@ -36,6 +37,11 @@ public class Boundary
 }
 
 public class PlayerController : MonoBehaviour
+/********************************************************\
+ * BUT      : Gérer les contrôles et  actions du joueur.
+ * ENTREE   : Les inputs du joueur.
+ * SORTIE   : Les mouvements et actions du personnage joueur.
+\********************************************************/
 {
     //Header
     private float f_speed=10.0f;
@@ -65,7 +71,11 @@ public class PlayerController : MonoBehaviour
     public float f_TempsInvincible = 2.0f;
     private double d_MomentInvincible = 0.0f;
 
-    public CompteursJoueur c_Compteur = null;
+    private bool b_BombePossible = true;
+    private double d_TempsRetour = 0.0f;
+
+    public CompteursJoueur c_CompteurJoueur = null;
+    public Compteur c_Compteur = null;
 
     public Minuteur c_Minuteur = null;
 
@@ -73,18 +83,28 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+    /********************************************************\
+     * BUT      : Mettre en place les variables dont le PlayerController a besoin au lancement
+     * ENTREE   : Les références de scripts et variables de GameDesign
+     * SORTIE   : Les variables qui seront utilisées, initialisées.
+    \********************************************************/
     {
         boundary.SetScreenBounds();
         rb = GetComponent<Rigidbody>();
 
-        if (c_Compteur == null)
+        if (c_CompteurJoueur == null)
         {
-            c_Compteur = GameObject.Find("GameManager").GetComponent<CompteursJoueur>();
+            c_CompteurJoueur = GameObject.Find("GameManager").GetComponent<CompteursJoueur>();
         }
 
         if (c_Minuteur == null)
         {
             c_Minuteur = GameObject.Find("GameManager").GetComponent<Minuteur>();
+        }
+
+        if (c_Compteur==null)
+        {
+            c_Compteur = GameObject.Find("GameManager").GetComponent<Compteur>();
         }
 
         f_speed = f_Vitesse;
@@ -94,8 +114,14 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    /********************************************************\
+     * BUT      : Récupérer les inputs du joueur et les appliquer.
+     * ENTREE   : Les inputs du joueur.
+     * SORTIE   : L'appelle des fonctions relatives à ces inputs.
+    \********************************************************/
     {
-        if(Input.GetButton("Fire1")&& Time.time>nextFire)
+        //Réception des inputs.
+        if (Input.GetButton("Fire1")&& Time.time>nextFire)
         {
             nextFire = Time.time + f_fireRate;
             Tir();
@@ -157,18 +183,34 @@ public class PlayerController : MonoBehaviour
             Bombe();
         }
 
+
+
+        //Gestion des bombes et de l'invincibilité
         if (b_Invincible)
         {
             if (d_MomentInvincible+f_TempsInvincible<=c_Minuteur.GetTemps())
             {
                 b_Invincible = false;
-                Debug.Log("Plus Invincible");
+            }
+        }
+
+        if (!b_BombePossible)
+        {
+            if  (c_Minuteur.GetTemps()>=d_TempsRetour)
+            {
+                b_BombePossible = true;
+                ArcaneExplosion();
             }
         }
     }
 
     //Fixed Update is called before each fixed physic step
     void FixedUpdate()
+    /********************************************************\
+     * BUT      : Déplacer le joueur selon des mouvements physiques.
+     * ENTREE   : Les inputs axiaux du joueur.
+     * SORTIE   : Les déplacements du joueur en de l'axe, la vitesse et le temps.
+    \********************************************************/
     {
         //Associations des inputs pour le déplacement
         float f_moveHorizontal = Input.GetAxis("Horizontal");
@@ -176,7 +218,7 @@ public class PlayerController : MonoBehaviour
 
         //Réalisation du déplacement
         Vector3 v_movement = new Vector3(f_moveHorizontal, f_moveVertical, 0.0f);
-        rb.velocity = v_movement*f_speed;
+        rb.velocity = v_movement*f_speed*Time.fixedDeltaTime;
 
         rb.position = new Vector3
         (
@@ -189,6 +231,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void Tir()
+    /********************************************************\
+     * BUT      : 
+     * ENTREE   : 
+     * SORTIE   : 
+    \********************************************************/
     {
         switch (gameObject.tag)
         {
@@ -208,6 +255,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void Arcane()
+    /********************************************************\
+     * BUT      : 
+     * ENTREE   : 
+     * SORTIE   : 
+    \********************************************************/
     {
         for (int i = 0; i < 3; i++)
         {
@@ -232,6 +284,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void Feu()
+    /********************************************************\
+     * BUT      : 
+     * ENTREE   : 
+     * SORTIE   : 
+    \********************************************************/
     {
         for (int i = 0; i < 5; i++)
         {
@@ -262,6 +319,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void Bois()
+    /********************************************************\
+     * BUT      : 
+     * ENTREE   : 
+     * SORTIE   : 
+    \********************************************************/
     {
         for (int i = 0; i < 5; i++)
         {
@@ -286,6 +348,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void Terre()
+    /********************************************************\
+     * BUT      : 
+     * ENTREE   : 
+     * SORTIE   : 
+    \********************************************************/
     {
         for (int i = 0; i < 3; i++)
         {
@@ -306,22 +373,46 @@ public class PlayerController : MonoBehaviour
     }
 
     void Bombe()
+    /********************************************************\
+     * BUT      : 
+     * ENTREE   : 
+     * SORTIE   : 
+    \********************************************************/
     {
-        if (c_Compteur.n_Bombe>0 && !b_Invincible)
+        if (c_CompteurJoueur.n_Bombe>0 && !b_Invincible && b_BombePossible)
         {
             b_Invincible = true;
-            d_MomentInvincible = c_Minuteur.GetTemps();
             Debug.Log("Invincible");
 
-            c_Compteur.ChangeBombe(-1);
+            c_CompteurJoueur.ChangeBombe(-1);
             Debug.Log("Bombe");
             
             GameObject[] Danmakus = FindGameObjectsInLayer(LayerMask.NameToLayer("Danmaku"));
-            
-            foreach (GameObject Danmaku in Danmakus)
+
+            if (Danmakus!=null)
             {
-                Destroy(Danmaku);
+                foreach (GameObject Danmaku in Danmakus)
+                {
+                    Destroy(Danmaku);
+                }
             }
+            switch (gameObject.tag)
+            {
+                case "Terre":
+                    BombeTerre();
+                    break;
+                case "Bois":
+                    BombeBois();
+                    break;
+                case "Feu":
+                    BombeFeu();
+                    break;
+                default:
+                    BombeArcane();
+                    break;
+            }
+
+            d_MomentInvincible = c_Minuteur.GetTemps();
         }
         else
         {
@@ -329,7 +420,102 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void BombeArcane()
+    /********************************************************\
+     * BUT      : 
+     * ENTREE   : 
+     * SORTIE   : 
+    \********************************************************/
+    {
+        b_BombePossible = false;
+        GameObject[] o_Ennemis = FindGameObjectsInLayer(LayerMask.NameToLayer("Ennemi"));
+        if (o_Ennemis != null)
+        {
+            foreach (GameObject o_Ennemi in o_Ennemis)
+            {
+                o_Ennemi.GetComponent<Ennemi>().Vaincu();
+            }
+        }
+        d_TempsRetour = c_Minuteur.GetTemps();
+        c_Minuteur.SetTemps(d_TempsRetour - 5);
+    }
+
+    void ArcaneExplosion()
+    /********************************************************\
+     * BUT      : 
+     * ENTREE   : 
+     * SORTIE   : 
+    \********************************************************/
+    {
+        GameObject[] o_Ennemis = FindGameObjectsInLayer(LayerMask.NameToLayer("Ennemi"));
+        if (o_Ennemis!=null)
+        {
+            foreach (GameObject o_Ennemi in o_Ennemis)
+            {
+                o_Ennemi.GetComponent<Ennemi>().InfligeDegats(10);
+            }
+        }
+    }
+
+    void BombeFeu()
+    /********************************************************\
+     * BUT      : 
+     * ENTREE   : 
+     * SORTIE   : 
+    \********************************************************/
+    {
+        GameObject[] o_Ennemis = FindGameObjectsInLayer(LayerMask.NameToLayer("Ennemi"));
+        if (o_Ennemis != null)
+        {
+            foreach (GameObject o_Ennemi in o_Ennemis)
+            {
+                o_Ennemi.GetComponent<Ennemi>().InfligeDegats(10);
+            }
+        }
+
+    }
+    
+    void BombeBois()
+    /********************************************************\
+     * BUT      : 
+     * ENTREE   : 
+     * SORTIE   : 
+    \********************************************************/
+    {
+        GameObject[] o_Ennemis = FindGameObjectsInLayer(LayerMask.NameToLayer("Ennemi"));
+        if (o_Ennemis != null)
+        {
+            foreach (GameObject o_Ennemi in o_Ennemis)
+            {
+                o_Ennemi.GetComponent<Ennemi>().InfligeDegats(10);
+            }
+        }
+
+    }
+    
+    void BombeTerre()
+    /********************************************************\
+     * BUT      : 
+     * ENTREE   : 
+     * SORTIE   : 
+    \********************************************************/
+    {
+        GameObject[] o_Ennemis = FindGameObjectsInLayer(LayerMask.NameToLayer("Ennemi"));
+        if (o_Ennemis != null)
+        {
+            foreach (GameObject o_Ennemi in o_Ennemis)
+            {
+                o_Ennemi.GetComponent<Ennemi>().InfligeDegats(10);
+            }
+        }
+    }
+
     GameObject[] FindGameObjectsInLayer(int layer)
+    /********************************************************\
+     * BUT      : 
+     * ENTREE   : 
+     * SORTIE   : 
+    \********************************************************/
     {
         var goArray = FindObjectsOfType(typeof(GameObject)) as GameObject[];
         var goList = new System.Collections.Generic.List<GameObject>();

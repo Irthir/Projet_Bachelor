@@ -1,3 +1,11 @@
+## [0.0.9.6] - 2021-04-11
+### Ajout
+-Mise en place des contrôles switch.
+-Mise en place de l'interface de jeu.
+-Code de base des différentes bombes.
+-Code de la bombe Arcanique, celle du retour dans le temps.
+-Révision du système d'apparition et de réapparition des ennemis ainsi que des motifs liés.
+
 ## [0.0.9.5] - 2021-04-10
 ### Modification
 -Réajustement de la zone de jeu.
@@ -12,7 +20,7 @@
 ### Modification
 -Augmentation de la vitesse de tir et de recharge.
 -Système de Concentration du Joueur côté code pour éviter un bug.
-###Ajout
+### Ajout
 -Système de Bombe du Joueur.
 -Système d'absorption du Joueur.
 -Début de système de Score du Joueur.
