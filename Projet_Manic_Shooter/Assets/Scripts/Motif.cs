@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Motif : MonoBehaviour
+/********************************************************\
+ * BUT      : Classe mère des motifs des attaques ennemies.
+ * ENTREE   : La date de naissance, le minuteur et la position de départ.
+ * SORTIE   : L'appel de la fonction Spawn à interval régulier.
+\********************************************************/
 {
     public Minuteur c_Minuteur = null;
     public float f_Vitesse = 1f;
@@ -43,6 +48,11 @@ public class Motif : MonoBehaviour
     }
 
     public void RetourTemps()
+    /********************************************************\
+     * BUT      : Réinitialiser les tirs quand le temps remonte.
+     * ENTREE   : L'appelle de la méthode et le nouveau temps actuel.
+     * SORTIE   : La fréquence de tir réinitialisée.
+    \********************************************************/
     {
         f_LastShot = (float)c_Minuteur.GetTemps() - (float)d_Naissance;
     }

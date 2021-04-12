@@ -10,13 +10,18 @@ public class Minuteur : MonoBehaviour
     *   SORTIE : Une variable de Temps lisible pour les autres éléments en ayant besoin.
     \*********************************************************************************************************************/
 
-    public  double d_Temps=0.0;
-    private bool b_Actif = false;
+    public double d_Temps=0.0;
+    public bool b_Actif = false;
+    public GameObject o_UIPause=null;
 
     // Start is called before the first frame update
     void Start()
     {
-        b_Actif = true;
+        if (o_UIPause==null)
+        {
+            o_UIPause = GameObject.Find("PanelPause");
+        }
+        Play();
     }
 
     // Update is called once per frame
@@ -41,10 +46,12 @@ public class Minuteur : MonoBehaviour
     public void Pause()
     {
         b_Actif = false;
+        o_UIPause.SetActive(true);
     }
 
     public void Play()
     {
         b_Actif = true;
+        o_UIPause.SetActive(false);
     }
 }

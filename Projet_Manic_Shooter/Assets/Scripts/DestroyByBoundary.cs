@@ -11,7 +11,14 @@ public class DestroyByBoundary : MonoBehaviour
      * SORTIE   : La destruction de ces objets.
     \************************************************************/
     {
-        Destroy(other.gameObject);
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ennemi"))
+        {
+            other.GetComponent<Ennemi>().Vaincu(true);
+        }
+        else
+        {
+            Destroy(other.gameObject);
+        }       
         //Debug.Log("Destruction de " + other.name);
     }
 }

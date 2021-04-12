@@ -14,7 +14,6 @@ public class Boundary
      * ENTREE   : Les limites de ce que voit la caméra.
      * SORTIE   : Les limites de l'écran stockées.
     \********************************************************/
-
     {
         if (rectTerrain == null)
         {
@@ -120,87 +119,97 @@ public class PlayerController : MonoBehaviour
      * SORTIE   : L'appelle des fonctions relatives à ces inputs.
     \********************************************************/
     {
-        //Réception des inputs.
-        if (Input.GetButton("Fire1")&& Time.time>nextFire)
+        if (c_Minuteur.b_Actif)
         {
-            nextFire = Time.time + f_fireRate;
-            Tir();
-        }
-
-        if (Input.GetButtonDown("Suivant"))
-        {
-            switch (gameObject.tag)
+            //Réception des inputs.
+            if (Input.GetButton("Fire1") && Time.time > nextFire)
             {
-                case "Feu" :
-                    gameObject.tag = "Bois";
-                    break;
-                case "Bois" :
-                    gameObject.tag = "Terre";
-                    break;
-                default:
-                    gameObject.tag = "Feu";
-                    break;
+                nextFire = Time.time + f_fireRate;
+                Tir();
+            }
+
+            if (Input.GetButtonDown("Suivant"))
+            {
+                switch (gameObject.tag)
+                {
+                    case "Feu":
+                        gameObject.tag = "Bois";
+                        break;
+                    case "Bois":
+                        gameObject.tag = "Terre";
+                        break;
+                    default:
+                        gameObject.tag = "Feu";
+                        break;
+                }
+            }
+
+            if (Input.GetButtonDown("Precedent"))
+            {
+                switch (gameObject.tag)
+                {
+                    case "Bois":
+                        gameObject.tag = "Feu";
+                        break;
+                    case "Terre":
+                        gameObject.tag = "Bois";
+                        break;
+                    default:
+                        gameObject.tag = "Terre";
+                        break;
+                }
+            }
+
+            if (Input.GetButtonDown("Arcane"))
+            {
+                gameObject.tag = "Arcane";
+            }
+
+            if (Input.GetButtonDown("Concentration"))
+            {
+                f_fireRate = f_TauxTir - f_AugmentationTauxTir;
+                f_fireSpeed = f_VitesseTir + f_AugmentationVitesseTir;
+                f_speed = f_Vitesse - f_Ralentissement;
+            }
+
+            if (Input.GetButtonUp("Concentration"))
+            {
+                f_fireRate = f_TauxTir;
+                f_fireSpeed = f_VitesseTir;
+                f_speed = f_Vitesse;
+            }
+
+            if (Input.GetButtonDown("Bombe"))
+            {
+                Bombe();
+            }
+
+            //Gestion des bombes et de l'invincibilité
+            if (b_Invincible)
+            {
+                if (d_MomentInvincible + f_TempsInvincible <= c_Minuteur.GetTemps())
+                {
+                    b_Invincible = false;
+                }
+            }
+
+            if (!b_BombePossible)
+            {
+                if (c_Minuteur.GetTemps() >= d_TempsRetour)
+                {
+                    b_BombePossible = true;
+                    ArcaneExplosion();
+                }
+            }
+
+            if (Input.GetButtonDown("Pause"))
+            {
+                c_Minuteur.Pause();
             }
         }
-
-        if (Input.GetButtonDown("Precedent"))
+        else if (Input.GetButtonDown("Pause"))
         {
-            switch (gameObject.tag)
-            {
-                case "Bois" :
-                    gameObject.tag = "Feu";
-                    break;
-                case "Terre" :
-                    gameObject.tag = "Bois";
-                    break;
-                default:
-                    gameObject.tag = "Terre";
-                    break;
-            }
-        }
-
-        if (Input.GetButtonDown("Arcane"))
-        {
-            gameObject.tag = "Arcane";
-        }
-
-        if (Input.GetButtonDown("Concentration"))
-        {
-            f_fireRate = f_TauxTir - f_AugmentationTauxTir;
-            f_fireSpeed =  f_VitesseTir + f_AugmentationVitesseTir;
-            f_speed = f_Vitesse - f_Ralentissement;
-        }
-
-        if (Input.GetButtonUp("Concentration"))
-        {
-            f_fireRate = f_TauxTir;
-            f_fireSpeed = f_VitesseTir;
-            f_speed = f_Vitesse;
-        }
-
-        if (Input.GetButtonDown("Bombe"))
-        {
-            Bombe();
-        }
-
-
-
-        //Gestion des bombes et de l'invincibilité
-        if (b_Invincible)
-        {
-            if (d_MomentInvincible+f_TempsInvincible<=c_Minuteur.GetTemps())
-            {
-                b_Invincible = false;
-            }
-        }
-
-        if (!b_BombePossible)
-        {
-            if  (c_Minuteur.GetTemps()>=d_TempsRetour)
-            {
-                b_BombePossible = true;
-                ArcaneExplosion();
-            }
+            c_Minuteur.Play();
         }
     }
 
@@ -212,29 +221,36 @@ public class PlayerController : MonoBehaviour
      * SORTIE   : Les déplacements du joueur en de l'axe, la vitesse et le temps.
     \********************************************************/
     {
-        //Associations des inputs pour le déplacement
-        float f_moveHorizontal = Input.GetAxis("Horizontal");
-        float f_moveVertical = Input.GetAxis("Vertical");
+        if (c_Minuteur.b_Actif)
+        {
+            //Associations des inputs pour le déplacement
+            float f_moveHorizontal = Input.GetAxis("Horizontal");
+            float f_moveVertical = Input.GetAxis("Vertical");
 
-        //Réalisation du déplacement
-        Vector3 v_movement = new Vector3(f_moveHorizontal, f_moveVertical, 0.0f);
-        rb.velocity = v_movement*f_speed*Time.fixedDeltaTime;
+            //Réalisation du déplacement
+            Vector3 v_movement = new Vector3(f_moveHorizontal, f_moveVertical, 0.0f);
+            rb.velocity = v_movement * f_speed * Time.fixedDeltaTime;
 
-        rb.position = new Vector3
-        (
-            Mathf.Clamp(rb.position.x, boundary.xMin, boundary.xMax),
-            Mathf.Clamp(rb.position.y, boundary.yMin, boundary.yMax),
-            0.0f
-        );
+            rb.position = new Vector3
+            (
+                Mathf.Clamp(rb.position.x, boundary.xMin, boundary.xMax),
+                Mathf.Clamp(rb.position.y, boundary.yMin, boundary.yMax),
+                0.0f
+            );
 
-        rb.rotation = Quaternion.Euler(0.0f, GetComponent<Rigidbody>().velocity.x * -f_tilt, 0.0f);
+            rb.rotation = Quaternion.Euler(0.0f, GetComponent<Rigidbody>().velocity.x * -f_tilt, 0.0f);
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
 
     void Tir()
     /********************************************************\
-     * BUT      : 
-     * ENTREE   : 
-     * SORTIE   : 
+     * BUT      : Effectuer le tir correspondant à l'élément actuel du joueur.
+     * ENTREE   : L'action du tir du joueur et le tag du joueur portant son élément.
+     * SORTIE   : L'appel de la méthode correspondant au tir du dit élément.
     \********************************************************/
     {
         switch (gameObject.tag)
@@ -256,9 +272,9 @@ public class PlayerController : MonoBehaviour
 
     void Arcane()
     /********************************************************\
-     * BUT      : 
-     * ENTREE   : 
-     * SORTIE   : 
+     * BUT      : Réaliser le motif d'arcane du joueur.
+     * ENTREE   : Les points d'apparition des attaques du joueur et le prefab du tir d'arcane.
+     * SORTIE   : L'apparition des tirs d'arcanes en suivant leurs motifs.
     \********************************************************/
     {
         for (int i = 0; i < 3; i++)
@@ -285,9 +301,9 @@ public class PlayerController : MonoBehaviour
 
     void Feu()
     /********************************************************\
-     * BUT      : 
-     * ENTREE   : 
-     * SORTIE   : 
+     * BUT      : Réaliser le motif de feu du joueur.
+     * ENTREE   : Les points d'apparition des attaques du joueur et le prefab du tir de feu.
+     * SORTIE   : L'apparition des tirs de feu en suivant leurs motifs.
     \********************************************************/
     {
         for (int i = 0; i < 5; i++)
@@ -320,9 +336,9 @@ public class PlayerController : MonoBehaviour
 
     void Bois()
     /********************************************************\
-     * BUT      : 
-     * ENTREE   : 
-     * SORTIE   : 
+     * BUT      : Réaliser le motif de bois du joueur.
+     * ENTREE   : Les points d'apparition des attaques du joueur et le prefab du tir de bois.
+     * SORTIE   : L'apparition des tirs de bois en suivant leurs motifs.
     \********************************************************/
     {
         for (int i = 0; i < 5; i++)
@@ -349,9 +365,9 @@ public class PlayerController : MonoBehaviour
 
     void Terre()
     /********************************************************\
-     * BUT      : 
-     * ENTREE   : 
-     * SORTIE   : 
+     * BUT      : Réaliser le motif de terre du joueur.
+     * ENTREE   : Les points d'apparition des attaques du joueur et le prefab du tir de terre.
+     * SORTIE   : L'apparition des tirs de terre en suivant leurs motifs.
     \********************************************************/
     {
         for (int i = 0; i < 3; i++)
@@ -374,18 +390,16 @@ public class PlayerController : MonoBehaviour
 
     void Bombe()
     /********************************************************\
-     * BUT      : 
-     * ENTREE   : 
-     * SORTIE   : 
+     * BUT      : Effectuer l'action de bombe du joueur.
+     * ENTREE   : Le tag, l'état d'invincibilité, le temps et la capacité d'effectuer la bombe du joueur.
+     * SORTIE   : L'appel de la méthode de bombe relative à l'élément du joueur, et l'état d'invincibilité appliqué.
     \********************************************************/
     {
-        if (c_CompteurJoueur.n_Bombe>0 && !b_Invincible && b_BombePossible)
+        if (c_CompteurJoueur.n_Bombe>0 && !b_Invincible && b_BombePossible && c_Minuteur.GetTemps()>=5.0f)
         {
             b_Invincible = true;
-            Debug.Log("Invincible");
 
             c_CompteurJoueur.ChangeBombe(-1);
-            Debug.Log("Bombe");
             
             GameObject[] Danmakus = FindGameObjectsInLayer(LayerMask.NameToLayer("Danmaku"));
 
@@ -422,9 +436,9 @@ public class PlayerController : MonoBehaviour
 
     void BombeArcane()
     /********************************************************\
-     * BUT      : 
-     * ENTREE   : 
-     * SORTIE   : 
+     * BUT      : Réaliser la bombe d'arcane et le retour dans le temps.
+     * ENTREE   : Les ennemis à l'écran et le temps.
+     * SORTIE   : Le temps réduit de 5, les ennemis retiré de l'écran et la bombe prévu pour dans 5 secondes.
     \********************************************************/
     {
         b_BombePossible = false;
@@ -442,9 +456,9 @@ public class PlayerController : MonoBehaviour
 
     void ArcaneExplosion()
     /********************************************************\
-     * BUT      : 
-     * ENTREE   : 
-     * SORTIE   : 
+     * BUT      : Réaliser l'explosion à rebours de la bombe d'arcane.
+     * ENTREE   : Les ennemis et projectiles ennemis à l'écran.
+     * SORTIE   : La destruction des projectiles ennemis et les dégâts infligés aux ennemis.
     \********************************************************/
     {
         GameObject[] o_Ennemis = FindGameObjectsInLayer(LayerMask.NameToLayer("Ennemi"));
@@ -455,13 +469,22 @@ public class PlayerController : MonoBehaviour
                 o_Ennemi.GetComponent<Ennemi>().InfligeDegats(10);
             }
         }
+
+        GameObject[] Danmakus = FindGameObjectsInLayer(LayerMask.NameToLayer("Danmaku"));
+        if (Danmakus != null)
+        {
+            foreach (GameObject Danmaku in Danmakus)
+            {
+                Destroy(Danmaku);
+            }
+        }
     }
 
     void BombeFeu()
     /********************************************************\
-     * BUT      : 
-     * ENTREE   : 
-     * SORTIE   : 
+     * BUT      : Réaliser la bombe de feu.
+     * ENTREE   : Les ennemis à l'écran.
+     * SORTIE   : Les dégâts infligés aux ennemis.
     \********************************************************/
     {
         GameObject[] o_Ennemis = FindGameObjectsInLayer(LayerMask.NameToLayer("Ennemi"));
@@ -477,9 +500,9 @@ public class PlayerController : MonoBehaviour
     
     void BombeBois()
     /********************************************************\
-     * BUT      : 
-     * ENTREE   : 
-     * SORTIE   : 
+     * BUT      : Réaliser la bombe de bois.
+     * ENTREE   : Les ennemis à l'écran.
+     * SORTIE   : Les dégâts infligés aux ennemis.
     \********************************************************/
     {
         GameObject[] o_Ennemis = FindGameObjectsInLayer(LayerMask.NameToLayer("Ennemi"));
@@ -495,9 +518,9 @@ public class PlayerController : MonoBehaviour
     
     void BombeTerre()
     /********************************************************\
-     * BUT      : 
-     * ENTREE   : 
-     * SORTIE   : 
+     * BUT      : Réaliser la bombe de terre.
+     * ENTREE   : Les ennemis à l'écran.
+     * SORTIE   : Les dégâts infligés aux ennemis.
     \********************************************************/
     {
         GameObject[] o_Ennemis = FindGameObjectsInLayer(LayerMask.NameToLayer("Ennemi"));
@@ -512,9 +535,9 @@ public class PlayerController : MonoBehaviour
 
     GameObject[] FindGameObjectsInLayer(int layer)
     /********************************************************\
-     * BUT      : 
-     * ENTREE   : 
-     * SORTIE   : 
+     * BUT      : Faire une liste d'objet à partir d'un layer.
+     * ENTREE   : Le layer cible.
+     * SORTIE   : Le tableau des objets.
     \********************************************************/
     {
         var goArray = FindObjectsOfType(typeof(GameObject)) as GameObject[];

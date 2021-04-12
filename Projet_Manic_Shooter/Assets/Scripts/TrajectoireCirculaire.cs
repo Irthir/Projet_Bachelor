@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrajectoireCirculaire : Trajectoire
+/********************************************************\
+ * BUT      : Réaliser une trajectoire circulaire.
+ * ENTREE   : Les informations de la classe mère trajectoire.
+ * SORTIE   : Un mouvement circulaire en fonction du temps.
+\********************************************************/
 {
     public float f_rayon = 3.0f;
     public Vector3 v_Centre;

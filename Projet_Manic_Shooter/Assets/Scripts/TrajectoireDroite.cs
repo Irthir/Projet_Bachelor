@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrajectoireDroite : Trajectoire
+/********************************************************\
+ * BUT      : Réaliser une trajectoire droite.
+ * ENTREE   : Les informations de la classe mère trajectoire.
+ * SORTIE   : Un mouvement en ligne droite en fonction du temps.
+\********************************************************/
 {
     public float f_Angle = 90.0f;
 

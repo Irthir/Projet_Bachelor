@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionJoueur : MonoBehaviour
+/********************************************************\
+ * BUT      : Gérer les collisions du joueur avec les ennemis et les projectiles ennemis.
+ * ENTREE   : L'objet entrant en collision avec le joueur.
+ * SORTIE   : L'absorption des projectile de même élément ou la perte de vie dans les autres cas.
+\********************************************************/
 {
     public GameObject o_Joueur = null;
     public CompteursJoueur c_Compteur = null;

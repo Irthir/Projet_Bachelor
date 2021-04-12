@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ennemi : MonoBehaviour
+/********************************************************\
+ * BUT      : Gérer la vie d'un ennemi tant qu'il existe.
+ * ENTREE   : Les variables de l'ennemi et ses collisions ainsi que sa prise de dégâts.
+ * SORTIE   : La vie de l'ennemi et sa mort le cas échéant.
+\********************************************************/
 {
     public Minuteur c_Minuteur = null;
     public Compteur c_Compteur = null;
@@ -19,6 +24,11 @@ public class Ennemi : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+    /********************************************************\
+     * BUT      : Initialiser les références de la classe.
+     * ENTREE   : Les références de la classe à initialiser.
+     * SORTIE   : La création terminée de l'ennemi et l'ajout de l'ennemi à la liste des ennemis.
+    \********************************************************/
     {
         if (c_Minuteur == null)
         {
@@ -36,6 +46,12 @@ public class Ennemi : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    /********************************************************\
+     * BUT      : Si l'ennemi est mort mais que le temps a été remonté, il doit revenir à la vie.
+                  Si l'ennemi est mort depuis trop longtemps, il doit être détruit.
+     * ENTREE   : La mort potentielle de l'ennemi, le temps actuel et la date de mort de l'ennemi.
+     * SORTIE   : La destruction ou la résurrection de l'ennemi.
+    \********************************************************/
     {
         if (b_Vaincu)
         {
@@ -57,6 +73,11 @@ public class Ennemi : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider TirJoueur)
+    /********************************************************\
+     * BUT      : Gérer les dégâts pris par l'ennemi lors de la collision avec un tir du joueur.
+     * ENTREE   : Le tir du joueur et les éléments du tir et de l'ennemi.
+     * SORTIE   : La gestion des dégâts et de la collision de l'ennemi.
+    \********************************************************/
     {
         if (TirJoueur.gameObject.layer == LayerMask.NameToLayer("Magie"))
         {
@@ -79,6 +100,11 @@ public class Ennemi : MonoBehaviour
     }
 
     public void InfligeDegats(int n_degats)
+    /********************************************************\
+     * BUT      : Infliger des dégâts à l'ennemi.
+     * ENTREE   : Les dégâts à infliger.
+     * SORTIE   : La perte de vie et la défaite dans le cas échéant.
+    \********************************************************/
     {
         if (n_Vie>0)
         {
@@ -92,8 +118,21 @@ public class Ennemi : MonoBehaviour
     }
 
 
-    public void Vaincu()
+    public void Vaincu(bool b_MortParEnvironnement=false)
+    /********************************************************\
+     * BUT      : Gérer la défaite de l'ennemi.
+     * ENTREE   : La défaite de l'ennemi.
+     * SORTIE   : La désactivation de l'ennemi en attendant la mort ou la résurrection de l'ennemi.
+    \********************************************************/
     {
+        if (b_MortParEnvironnement)
+        {
+            //Pas de score
+        }
+        else
+        {
+            //Du score !
+        }
 
         b_Vaincu = true;
 
@@ -110,6 +149,11 @@ public class Ennemi : MonoBehaviour
     }
 
     void Resurrection()
+    /********************************************************\
+     * BUT      : Ressusciter l'ennemi quand le temps a été remonté à un moment où il était vivant et déjà né.
+     * ENTREE   : La résurrection de l'ennemi.
+     * SORTIE   : La remise en place de l'ennemi et de ses motifs.
+    \********************************************************/
     {
         b_Vaincu = false;
  

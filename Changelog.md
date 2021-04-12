@@ -1,3 +1,12 @@
+## [0.0.9.7] - 2021-04-12
+### Ajout
+-Mise en place de la pause.
+### Modification
+-Révision des commentaires du code.
+-Correction de bugs du au retour dans le temps.
+-Révision du système de mort des ennemis.
+-Révision de l'application du temps sur les déplacement du joueur.
+
 ## [0.0.9.6] - 2021-04-11
 ### Ajout
 -Mise en place des contrôles switch.

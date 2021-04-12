@@ -3,22 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CompteursJoueur : MonoBehaviour
+/********************************************************\
+ * BUT      : Stocker les compteurs lliés aux joueurs.
+ * ENTREE   : La vie, le score et les bombes du joueur.
+ * SORTIE   : L'état des variables du joueur mises à jour.
+\********************************************************/
 {
     public int n_Bombe;
     public int n_Vie;
     public long ln_Score;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void ChangeScore(int n_Score)
     {

@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MotifTirSimple : Motif
+/********************************************************\
+ * BUT      : Réaliser des tirs simples.
+ * ENTREE   : Le nombre de tir et l'angle entre ces derniers.
+ * SORTIE   : Les tirs partant en ligne droite depuis leur point d'apparition.
+\********************************************************/
 {
     public GameObject Tir;
     public int n_NombreTir = 1;

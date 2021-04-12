@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrajectoireChercheEnnemi : Trajectoire
+/********************************************************\
+ * BUT      : Réaliser une trajectoire pour aller vers l'ennemi le plus proche.
+ * ENTREE   : La classe mère trajectoire et la liste des ennemis.
+ * SORTIE   : Les déplacements vers l'ennemi le plus proche.
+\********************************************************/
 {
     public Compteur c_Compteur = null;
 
@@ -32,6 +37,11 @@ public class TrajectoireChercheEnnemi : Trajectoire
     }
 
     Transform ChercheEnnemiProche(List<Transform> t_Ennemis)
+    /********************************************************\
+     * BUT      : Trouver l'ennemi le plus proche.
+     * ENTREE   : La liste des ennemis et la position actuelle.
+     * SORTIE   : La position de l'ennemi le plus proche.
+    \********************************************************/
     {
         Transform t_Min = null;
         float f_MinDist = Mathf.Infinity;

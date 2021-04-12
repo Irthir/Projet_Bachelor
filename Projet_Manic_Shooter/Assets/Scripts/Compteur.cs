@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Compteur : MonoBehaviour
+/********************************************************\
+ * BUT      : Stocker les compteurs non liés au joueur.
+ * ENTREE   : Les ennemis quand ils apparaissent ou disparaissent.
+ * SORTIE   : L'état actuel des ennemis en jeu.
+\********************************************************/
 {
     public List<Transform> l_Ennemis;
     public int n_TailleListe = 0;

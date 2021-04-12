@@ -4,6 +4,11 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class AffichageÉlément : MonoBehaviour
+/********************************************************\
+ * BUT      : Régler l'affichage de l'élément du joueur sur l'interface.
+ * ENTREE   : L'élément du joueur et le texte à modifier.
+ * SORTIE   : Le texte modifiés.
+\********************************************************/
 {
     public GameObject o_Joueur = null;
     public Text t_Text = null;

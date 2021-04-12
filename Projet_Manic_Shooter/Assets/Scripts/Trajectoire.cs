@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Trajectoire : MonoBehaviour
+/********************************************************\
+ * BUT      : Réaliser une classe mère pour toutes les trajectoires.
+ * ENTREE   : La position et la date de naissance de l'objet.
+ * SORTIE   : La mise à jour du temps de l'objet à appliquer sur la trajectoire enfant.
+\********************************************************/
 {
     public Minuteur c_Minuteur = null;
     public float f_Vitesse = 1f;

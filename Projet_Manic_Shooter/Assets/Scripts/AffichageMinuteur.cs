@@ -4,6 +4,11 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class AffichageMinuteur : MonoBehaviour
+/********************************************************\
+ * BUT      : Régler l'affichage du minuteur sur l'interface.
+ * ENTREE   : Le minuteur et le texte à modifier.
+ * SORTIE   : Le texte modifiés.
+\********************************************************/
 {
     public Minuteur c_Minuteur = null;
     public Text t_Text = null;

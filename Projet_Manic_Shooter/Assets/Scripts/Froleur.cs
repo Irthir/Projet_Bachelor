@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Froleur : MonoBehaviour
+/********************************************************\
+ * BUT      : Gérer les gains du score du joueur quand il frôle une attaque ennemie.
+ * ENTREE   : La collision avec la sphère de frôlement.
+ * SORTIE   : Le gain du score et l'absorption le cas échéant.
+\********************************************************/
 {
     public GameObject o_Joueur;
 
@@ -15,7 +20,7 @@ public class Froleur : MonoBehaviour
         }
     }
 
-        void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Danmaku"))
         {
