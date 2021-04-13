@@ -18,7 +18,7 @@ public class DestroyByBoundary : MonoBehaviour
         else
         {
             Destroy(other.gameObject);
-        }       
+        }
         //Debug.Log("Destruction de " + other.name);
     }
 }

@@ -1,3 +1,10 @@
+## [0.0.9.8] - 2021-04-13
+### Ajout
+-Création de la bombe de feu.
+-Création de la bombe de bois.
+-Création de la bombe de terre.
+-Système de score simple durant le niveau.
+
 ## [0.0.9.7] - 2021-04-12
 ### Ajout
 -Mise en place de la pause.

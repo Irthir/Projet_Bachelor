@@ -14,12 +14,14 @@ public class Compteur : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+    //BUT : Initialiser la liste.
     {
         l_Ennemis = new List<Transform>();
         n_TailleListe = 0;
     }
 
     public void AjouteEnnemi(GameObject Ennemi)
+    //BUT : Ajouter un ennemi à la liste.
     {
         if (!l_Ennemis.Contains(Ennemi.transform))
         {
@@ -29,6 +31,7 @@ public class Compteur : MonoBehaviour
     }
 
     public void MortEnnemi(GameObject Ennemi)
+    //BUT : Retirer un ennemi de la liste.
     {
         if (l_Ennemis.Contains(Ennemi.transform))
         {
@@ -38,6 +41,7 @@ public class Compteur : MonoBehaviour
     }
 
     public void VideListe()
+    //BUT : Vider la liste.
     {
         l_Ennemis.Clear();
         n_TailleListe = 0;

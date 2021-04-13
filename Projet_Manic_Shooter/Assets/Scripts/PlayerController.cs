@@ -57,6 +57,12 @@ public class PlayerController : MonoBehaviour
     public GameObject o_Arcane;
     public GameObject o_Bois;
     public GameObject o_Terre;
+    
+    public GameObject o_BombeFeu;
+    public GameObject o_BombeArcane;
+    public GameObject o_BombeBois;
+    public GameObject o_BombeTerre;
+
     public float f_VitesseTir = 20.0f;
     public float f_AugmentationVitesseTir=5.0f;
 
@@ -77,6 +83,7 @@ public class PlayerController : MonoBehaviour
     public Compteur c_Compteur = null;
 
     public Minuteur c_Minuteur = null;
+    public CollisionJoueur c_Collision = null;
 
     //Functions
 
@@ -104,6 +111,11 @@ public class PlayerController : MonoBehaviour
         if (c_Compteur==null)
         {
             c_Compteur = GameObject.Find("GameManager").GetComponent<Compteur>();
+        }
+
+        if (c_Collision==null)
+        {
+            c_Collision = GameObject.Find("Collisionneur").GetComponent<CollisionJoueur>();
         }
 
         f_speed = f_Vitesse;
@@ -395,31 +407,24 @@ public class PlayerController : MonoBehaviour
      * SORTIE   : L'appel de la méthode de bombe relative à l'élément du joueur, et l'état d'invincibilité appliqué.
     \********************************************************/
     {
-        if (c_CompteurJoueur.n_Bombe>0 && !b_Invincible && b_BombePossible && c_Minuteur.GetTemps()>=5.0f)
+        if (c_CompteurJoueur.f_Bombe>0 && !b_Invincible && b_BombePossible && c_Minuteur.GetTemps()>=5.0f)
         {
             b_Invincible = true;
 
             c_CompteurJoueur.ChangeBombe(-1);
-            
-            GameObject[] Danmakus = FindGameObjectsInLayer(LayerMask.NameToLayer("Danmaku"));
 
-            if (Danmakus!=null)
-            {
-                foreach (GameObject Danmaku in Danmakus)
-                {
-                    Destroy(Danmaku);
-                }
-            }
+            NettoieEcran();
+
             switch (gameObject.tag)
             {
                 case "Terre":
-                    BombeTerre();
+                    StartCoroutine("BombeTerre");
                     break;
                 case "Bois":
-                    BombeBois();
+                    StartCoroutine("BombeBois");
                     break;
                 case "Feu":
-                    BombeFeu();
+                    StartCoroutine("BombeFeu");
                     break;
                 default:
                     BombeArcane();
@@ -470,66 +475,88 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        GameObject[] Danmakus = FindGameObjectsInLayer(LayerMask.NameToLayer("Danmaku"));
-        if (Danmakus != null)
-        {
-            foreach (GameObject Danmaku in Danmakus)
-            {
-                Destroy(Danmaku);
-            }
-        }
+        NettoieEcran();
     }
 
-    void BombeFeu()
+    IEnumerator BombeFeu()
     /********************************************************\
      * BUT      : Réaliser la bombe de feu.
-     * ENTREE   : Les ennemis à l'écran.
-     * SORTIE   : Les dégâts infligés aux ennemis.
+     * ENTREE   : Le nombre de bombes à réaliser.
+     * SORTIE   : La bombes de feu qui apparaissent en séquence.
     \********************************************************/
     {
-        GameObject[] o_Ennemis = FindGameObjectsInLayer(LayerMask.NameToLayer("Ennemi"));
-        if (o_Ennemis != null)
+        int nb_Bombe = 3;
+        while (nb_Bombe>0)
         {
-            foreach (GameObject o_Ennemi in o_Ennemis)
-            {
-                o_Ennemi.GetComponent<Ennemi>().InfligeDegats(10);
-            }
+            Instantiate(o_BombeFeu, transform.position, Quaternion.identity);
+            nb_Bombe--;
+            yield return new WaitForSeconds(1f);
         }
-
     }
-    
-    void BombeBois()
+
+    IEnumerator BombeBois()
     /********************************************************\
      * BUT      : Réaliser la bombe de bois.
      * ENTREE   : Les ennemis à l'écran.
      * SORTIE   : Les dégâts infligés aux ennemis.
     \********************************************************/
     {
-        GameObject[] o_Ennemis = FindGameObjectsInLayer(LayerMask.NameToLayer("Ennemi"));
-        if (o_Ennemis != null)
+        int nb_Bombe = 5;
+        while (nb_Bombe > 0)
         {
-            foreach (GameObject o_Ennemi in o_Ennemis)
+            for (int i = 0; i < 5; i++)
             {
-                o_Ennemi.GetComponent<Ennemi>().InfligeDegats(10);
+                GameObject BombeBois = null;
+                switch (i)
+                {
+                    case 0:
+                        BombeBois = Instantiate(o_BombeBois, MagicSpawns[1].position, Quaternion.identity);
+                        BombeBois.AddComponent<TrajectoireDroite>();
+                        break;
+                    case 1:
+                        BombeBois = Instantiate(o_BombeBois, MagicSpawns[2].position, Quaternion.identity);
+                        BombeBois.AddComponent<TrajectoireDroite>();
+                        break;
+                    case 2:
+                        BombeBois = Instantiate(o_BombeBois, MagicSpawns[5].position, MagicSpawns[5].rotation);
+                        BombeBois.AddComponent<TrajectoireDroite>();
+                        BombeBois.GetComponent<TrajectoireDroite>().f_Angle = 0.0f;
+                        break;
+                    case 3:
+                        BombeBois = Instantiate(o_BombeBois, MagicSpawns[6].position, MagicSpawns[6].rotation);
+                        BombeBois.AddComponent<TrajectoireDroite>();
+                        BombeBois.GetComponent<TrajectoireDroite>().f_Angle = 180.0f;
+                        break;
+                    case 4:
+                        BombeBois = Instantiate(o_BombeBois, MagicSpawns[7].position, MagicSpawns[7].rotation);
+                        BombeBois.AddComponent<TrajectoireDroite>();
+                        BombeBois.GetComponent<TrajectoireDroite>().f_Angle = 270.0f;
+                        break;
+                    default:
+                        break;
+                }
+                if (BombeBois!=null)
+                    BombeBois.GetComponent<TrajectoireDroite>().f_Vitesse = f_fireSpeed;
             }
+
+            nb_Bombe--;
+            yield return new WaitForSeconds(0.1f);
         }
 
     }
-    
-    void BombeTerre()
+
+    IEnumerator BombeTerre()
     /********************************************************\
      * BUT      : Réaliser la bombe de terre.
-     * ENTREE   : Les ennemis à l'écran.
-     * SORTIE   : Les dégâts infligés aux ennemis.
+     * ENTREE   : La mise en place du bouclier du joueur.
+     * SORTIE   : Le regain de points de bombes si le bouclier n'est pas tombé.
     \********************************************************/
     {
-        GameObject[] o_Ennemis = FindGameObjectsInLayer(LayerMask.NameToLayer("Ennemi"));
-        if (o_Ennemis != null)
+        c_Collision.b_BombeTerre = true;
+        yield return new WaitForSeconds(5.0f);
+        if (c_Collision.b_BombeTerre)
         {
-            foreach (GameObject o_Ennemi in o_Ennemis)
-            {
-                o_Ennemi.GetComponent<Ennemi>().InfligeDegats(10);
-            }
+            c_CompteurJoueur.ChangeBombe(0.5f);
         }
     }
 
@@ -554,5 +581,27 @@ public class PlayerController : MonoBehaviour
             return null;
         }
         return goList.ToArray();
+    }
+
+    public void NettoieEcran(bool b_GainScore=true)
+    /********************************************************\
+     * BUT      : Nettoyer l'écran des attaques ennemies.
+     * ENTREE   : Les attaques ennemies.
+     * SORTIE   : Les attaques ennemies supprimées.
+    \********************************************************/
+    {
+        GameObject[] Danmakus = FindGameObjectsInLayer(LayerMask.NameToLayer("Danmaku"));
+
+        if (Danmakus != null)
+        {
+            foreach (GameObject Danmaku in Danmakus)
+            {
+                Destroy(Danmaku);
+                if (b_GainScore)
+                {
+                    c_CompteurJoueur.ChangeScore(1);
+                }
+            }
+        }
     }
 }

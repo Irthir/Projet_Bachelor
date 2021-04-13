@@ -11,12 +11,14 @@ public class Ennemi : MonoBehaviour
 {
     public Minuteur c_Minuteur = null;
     public Compteur c_Compteur = null;
+    public CompteursJoueur c_CompteursJoueur = null;
 
     public Trajectoire c_Trajectoire;
     public GameObject Apparence;
     public GameObject Motif;
     public CapsuleCollider Collider;
     public int n_Vie = 10;
+    public int n_ValeurEnnemi = 10;
 
     private bool b_Vaincu = false;
     private double d_defaite;
@@ -38,6 +40,11 @@ public class Ennemi : MonoBehaviour
         if (c_Compteur == null)
         {
             c_Compteur = GameObject.Find("GameManager").GetComponent<Compteur>();
+        }
+
+        if (c_CompteursJoueur == null)
+        {
+            c_CompteursJoueur = GameObject.Find("GameManager").GetComponent<CompteursJoueur>();
         }
 
         c_Compteur.AjouteEnnemi(gameObject);
@@ -132,6 +139,7 @@ public class Ennemi : MonoBehaviour
         else
         {
             //Du score !
+            c_CompteursJoueur.ChangeScore(n_ValeurEnnemi);
         }
 
         b_Vaincu = true;

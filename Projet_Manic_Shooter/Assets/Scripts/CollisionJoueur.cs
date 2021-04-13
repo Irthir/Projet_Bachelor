@@ -12,9 +12,11 @@ public class CollisionJoueur : MonoBehaviour
     public GameObject o_Joueur = null;
     public CompteursJoueur c_Compteur = null;
     public PlayerController c_Controller = null;
+    public bool b_BombeTerre = false;
 
     // Start is called before the first frame update
     void Start()
+    //BUT : Initialiser les références.
     {
         if (o_Joueur == null)
         {
@@ -33,18 +35,26 @@ public class CollisionJoueur : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other)
+    //BUT : Gérer la collision du joueur.
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Danmaku"))
         {
             if (other.tag == o_Joueur.tag)
             {
-                Debug.Log("Absorption");
+                //Debug.Log("Absorption");
+                c_Compteur.ChangeScore(2);
             }
-            else
+            else if(!c_Controller.b_Invincible)
             {
-                if (!c_Controller.b_Invincible)
+                if (b_BombeTerre)
                 {
-                    Debug.Log("Vie Perdue");
+                    Debug.Log("BombeTerre");
+                    b_BombeTerre = false;
+                    c_Controller.NettoieEcran();
+                }
+                else
+                {
+                    c_Compteur.ChangeVie(-1.0f);
                 }
             }
         }

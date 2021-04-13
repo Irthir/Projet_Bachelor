@@ -330,9 +330,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fb00254ad6e944faf29ea659a9f4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  n_Bombe: 4
-  n_Vie: 5
+  f_Bombe: 4
+  f_Vie: 5
   ln_Score: 0
+  o_Bombe: {fileID: 1024509290}
+  o_Vie: {fileID: 1639522143}
+  o_Score: {fileID: 904472374}
 --- !u!1 &41866763
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,6 +818,10 @@ MonoBehaviour:
   o_Arcane: {fileID: 5240081320633407623, guid: 76389185fdf226347bd8379f925f8a40, type: 3}
   o_Bois: {fileID: 4853555894826464353, guid: 3419910fcc087254da478aeb8fc6a17b, type: 3}
   o_Terre: {fileID: 2812947979314127214, guid: fdc2a79298a2ce4449c0d36f7812d487, type: 3}
+  o_BombeFeu: {fileID: 2156104335860848134, guid: facc9c1fe030dd143a5a4576056ffe1d, type: 3}
+  o_BombeArcane: {fileID: 0}
+  o_BombeBois: {fileID: 6138818103056820173, guid: 5095decea0bcb444da57012d7ec9fb58, type: 3}
+  o_BombeTerre: {fileID: 0}
   f_VitesseTir: 20
   f_AugmentationVitesseTir: 5
   MagicSpawns:
@@ -823,6 +830,9 @@ MonoBehaviour:
   - {fileID: 1233278517}
   - {fileID: 473858209}
   - {fileID: 410495325}
+  - {fileID: 2042177944}
+  - {fileID: 510670953}
+  - {fileID: 1703770022}
   f_TauxTir: 0.15
   f_AugmentationTauxTir: 0.05
   b_Invincible: 0
@@ -830,6 +840,7 @@ MonoBehaviour:
   c_CompteurJoueur: {fileID: 0}
   c_Compteur: {fileID: 0}
   c_Minuteur: {fileID: 33279472}
+  c_Collision: {fileID: 0}
 --- !u!1 &410495324
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,6 +1002,36 @@ Transform:
   m_Father: {fileID: 1803556616}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &510670952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 510670953}
+  m_Layer: 7
+  m_Name: MagicSpawn7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &510670953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510670952}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.7, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1318313534}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &589460819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   o_Joueur: {fileID: 214254941}
+  c_CompteurJoueur: {fileID: 0}
 --- !u!135 &589460822
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1160,6 +1202,7 @@ MonoBehaviour:
   o_Joueur: {fileID: 214254941}
   c_Compteur: {fileID: 33279475}
   c_Controller: {fileID: 214254947}
+  b_BombeTerre: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,7 +1531,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911452759}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6999998, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1318313534}
@@ -1761,7 +1804,7 @@ GameObject:
   - component: {fileID: 1072126103}
   - component: {fileID: 1072126102}
   m_Layer: 5
-  m_Name: PanelGauche
+  m_Name: PanelDroit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1920,7 +1963,7 @@ GameObject:
   - component: {fileID: 1207309636}
   - component: {fileID: 1207309635}
   m_Layer: 5
-  m_Name: PanelDroit
+  m_Name: PanelGauche
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2011,7 +2054,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1233278516}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.6999998, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1318313534}
@@ -2153,6 +2196,9 @@ Transform:
   - {fileID: 1233278517}
   - {fileID: 473858209}
   - {fileID: 410495325}
+  - {fileID: 2042177944}
+  - {fileID: 510670953}
+  - {fileID: 1703770022}
   m_Father: {fileID: 214254945}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2180,7 +2226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347224390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.6999998, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1318313534}
@@ -2747,6 +2793,36 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0.75
+--- !u!1 &1703770021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1703770022}
+  m_Layer: 7
+  m_Name: MagicSpawn8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1703770022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703770021}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: -0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1318313534}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &1771180702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,11 +2948,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   c_Minuteur: {fileID: 33279472}
   c_Compteur: {fileID: 0}
+  c_CompteursJoueur: {fileID: 0}
   c_Trajectoire: {fileID: 1803556620}
   Apparence: {fileID: 1099573223}
   Motif: {fileID: 481402929}
   Collider: {fileID: 1803556618}
   n_Vie: 10
+  n_ValeurEnnemi: 10
 --- !u!136 &1803556618
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2925,6 +3003,36 @@ MonoBehaviour:
   v_Centre: {x: 0, y: 6, z: 0}
   f_Centre: {fileID: 0}
   f_AngleDecalage: 0
+--- !u!1 &2042177943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2042177944}
+  m_Layer: 7
+  m_Name: MagicSpawn6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2042177944
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042177943}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.7, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1318313534}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &2104594384
 GameObject:
   m_ObjectHideFlags: 0

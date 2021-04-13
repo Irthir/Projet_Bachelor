@@ -15,6 +15,7 @@ public class AffichageMinuteur : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+    //BUT : Initialiser les références.
     {
         if (c_Minuteur == null)
         {
@@ -29,6 +30,7 @@ public class AffichageMinuteur : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    //BUT : Mettre à jour l'affichage du temps.
     {
         t_Text.text = Mathf.Round((float)c_Minuteur.GetTemps()).ToString();
     }
