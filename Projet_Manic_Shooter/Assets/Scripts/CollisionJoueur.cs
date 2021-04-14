@@ -11,7 +11,8 @@ public class CollisionJoueur : MonoBehaviour
 {
     public GameObject o_Joueur = null;
     public CompteursJoueur c_Compteur = null;
-    public PlayerController c_Controller = null;
+    public PlayerCharacter c_Character = null;
+    public GameManager c_Manager = null;
     public bool b_BombeTerre = false;
 
     // Start is called before the first frame update
@@ -23,14 +24,19 @@ public class CollisionJoueur : MonoBehaviour
             o_Joueur = GameObject.Find("Joueur");
         }
 
-        if (c_Controller==null)
+        if (c_Character==null)
         {
-            c_Controller = o_Joueur.GetComponent<PlayerController>();
+            c_Character = o_Joueur.GetComponent<PlayerCharacter>();
         }
 
         if (c_Compteur==null)
         {
             c_Compteur = GameObject.Find("GameManager").GetComponent<CompteursJoueur>();
+        }
+
+        if (c_Manager==null)
+        {
+            c_Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
     }
 
@@ -44,25 +50,25 @@ public class CollisionJoueur : MonoBehaviour
                 //Debug.Log("Absorption");
                 c_Compteur.ChangeScore(2);
             }
-            else if(!c_Controller.b_Invincible)
+            else if(!c_Character.b_Invincible)
             {
                 if (b_BombeTerre)
                 {
-                    Debug.Log("BombeTerre");
+                    //Debug.Log("BombeTerre");
                     b_BombeTerre = false;
-                    c_Controller.NettoieEcran();
+                    c_Character.NettoieEcran();
                 }
                 else
                 {
-                    c_Compteur.ChangeVie(-1.0f);
+                    c_Manager.MortJoueur();
                 }
             }
         }
         else if(other.gameObject.layer == LayerMask.NameToLayer("Ennemi"))
         {
-            if (!c_Controller.b_Invincible)
+            if (!c_Character.b_Invincible)
             {
-                Debug.Log("Vie Perdue");
+                c_Manager.MortJoueur();
             }
         }
     }

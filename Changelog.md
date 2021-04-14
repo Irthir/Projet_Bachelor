@@ -1,3 +1,10 @@
+## [0.0.9.9] - 2021-04-14
+### Ajout
+-Mise en place de la mort du joueur.
+### Modification
+-Séparation du PlayerController et du PlayerCharacter.
+-Passage des scripts qui devaient l'être en singleton.
+
 ## [0.0.9.8] - 2021-04-13
 ### Ajout
 -Création de la bombe de feu.

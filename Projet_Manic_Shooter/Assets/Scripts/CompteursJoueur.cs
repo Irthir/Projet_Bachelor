@@ -98,4 +98,30 @@ public class CompteursJoueur : MonoBehaviour
     {
         o_Bombe.GetComponent<Text>().text = "Bombes : " + f_Bombe.ToString("00");
     }
+
+    #region code pour le singleton
+    //Groupe rendant le script unique.
+    private static CompteursJoueur instance = null;
+
+    // Game Instance Singleton
+    public static CompteursJoueur Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        // if the singleton hasn't been initialized yet
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+    #endregion
 }

@@ -40,7 +40,7 @@ public class Froleur : MonoBehaviour
             }
             else
             {
-                Debug.Log("Frôlement");
+                //Debug.Log("Frôlement");
                 c_CompteurJoueur.ChangeScore(1);
             }
         }

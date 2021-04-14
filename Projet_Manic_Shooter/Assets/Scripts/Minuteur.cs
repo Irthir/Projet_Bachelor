@@ -54,4 +54,30 @@ public class Minuteur : MonoBehaviour
         b_Actif = true;
         o_UIPause.SetActive(false);
     }
+
+    #region code pour le singleton
+    //Groupe rendant le script unique.
+    private static Minuteur instance = null;
+
+    // Game Instance Singleton
+    public static Minuteur Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        // if the singleton hasn't been initialized yet
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+    #endregion
 }
