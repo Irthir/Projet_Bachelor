@@ -146,7 +146,7 @@ public class Ennemi : MonoBehaviour
 
         d_defaite = c_Minuteur.GetTemps();
 
-        c_Trajectoire.enabled = false;
+        //c_Trajectoire.enabled = false;
         Collider.enabled = false;
         Apparence.SetActive(false);
         Motif.SetActive(false);

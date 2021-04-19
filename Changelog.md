@@ -1,3 +1,11 @@
+##[0.1.0.0] - 2021-04-19
+### Ajout
+-Préparation du mémoire.
+-Mise en place du système de vagues.
+-Mise en place des points d'apparitions des ennemis.
+-Mise en place de la structure de code Vague/Sous-Vague.
+-Ajout du motif de tir en trajectoire droite ciblée.
+
 ## [0.0.9.9] - 2021-04-14
 ### Ajout
 -Mise en place de la mort du joueur.
