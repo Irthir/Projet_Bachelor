@@ -3,7 +3,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/VagueScriptableObject", order=1)]
 public class VagueScriptableObject : ScriptableObject
 {
-    public GameObject prefabsEnnemis;
+    public GameObject prefabTrajectoire;
+
+    public GameObject prefabEnnemi;
+
+    public GameObject prefabMotif;
+
+    public GameObject prefabPointApparition;
 
     public int nb_Ennemis;
 

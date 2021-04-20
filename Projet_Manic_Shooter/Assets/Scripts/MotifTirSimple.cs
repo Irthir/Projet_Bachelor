@@ -16,7 +16,12 @@ public class MotifTirSimple : Motif
 
     protected override void Spawn()
     {
-        float f_AngleSeparation = -90.0f - ((f_AngleOffset * n_NombreTir)/2);
+        float f_AngleSeparation = -90.0f;
+        if (n_NombreTir > 1)
+            f_AngleSeparation = -90.0f - ((f_AngleOffset * (n_NombreTir - 1)) / 2);
+        else
+            f_AngleSeparation = -90.0f - f_AngleOffset;
+
         for (int i = 0; i < n_NombreTir; i++)
         {
             GameObject Instance = Instantiate(Tir, transform.position, Quaternion.identity);

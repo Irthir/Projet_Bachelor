@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f5b63cd107c5334d98ed1ebcc3f1a88, type: 3}
   m_Name: Vague0_SousVague1_Facile
   m_EditorClassIdentifier: 
-  prefabsEnnemis: {fileID: 5553940451117626973, guid: 4ecf7648721c0e24f987906f2ae12941, type: 3}
-  t_Apparition: {fileID: 0}
+  prefabTrajectoire: {fileID: 8411342345952249538, guid: 04803231f81cf584286f58da3f40f11f, type: 3}
+  prefabEnnemi: {fileID: 2838491724164856714, guid: 4ecf7648721c0e24f987906f2ae12941, type: 3}
+  prefabMotif: {fileID: 4844272861531794319, guid: aec038c648609f9438ec1777279c5136, type: 3}
+  prefabPointApparition: {fileID: 5061903406485083859, guid: dd662814189689e4bb81a7837e5c47b1, type: 3}
   nb_Ennemis: 10
   f_TempsVague: 10
-  c_TrajectoireEnnemi: {fileID: 0}
   Tag: Bois

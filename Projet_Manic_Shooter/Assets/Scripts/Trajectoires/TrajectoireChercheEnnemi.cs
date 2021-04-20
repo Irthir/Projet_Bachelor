@@ -28,11 +28,11 @@ public class TrajectoireChercheEnnemi : Trajectoire
 
         if (c_Compteur.n_TailleListe>0)
         {
-            transform.position = Vector3.MoveTowards(transform.position, ChercheEnnemiProche(c_Compteur.l_Ennemis).position, f_Vitesse*Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, ChercheEnnemiProche(c_Compteur.l_Ennemis).position, f_Vitesse * f_Delta * Time.deltaTime);
         }
         else
         {
-            transform.position += new Vector3(0,1,0) * f_Vitesse * Time.deltaTime;
+            transform.position += new Vector3(0,1,0) * f_Vitesse * f_Delta * Time.deltaTime;
         }
     }
 

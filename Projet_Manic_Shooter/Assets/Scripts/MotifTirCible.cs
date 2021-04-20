@@ -31,7 +31,7 @@ public class MotifTirCible : Motif
         Instance.AddComponent<TrajectoireDroite>();
         Instance.GetComponent<TrajectoireDroite>().f_Angle = f_Angle;
         Instance.GetComponent<TrajectoireDroite>().f_Vitesse = f_Vitesse;
-        Instance.tag = gameObject.transform.parent.tag;
+        Instance.tag = gameObject.transform.parent.parent.tag;
     }
 
     float AngleCible()

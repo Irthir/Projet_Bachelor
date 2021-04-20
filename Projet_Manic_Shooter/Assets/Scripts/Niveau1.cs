@@ -16,6 +16,8 @@ public class Niveau1 : MonoBehaviour
     Minuteur c_Minuteur = null;
     double d_Actuel = 0;
     double d_Precedent = 0;
+    [SerializeField]
+    Vague[] c_Vagues;
 
 
     // Start is called before the first frame update
@@ -43,34 +45,44 @@ public class Niveau1 : MonoBehaviour
         switch (n_Actuel + n_Precedent)
         {
             case ((int)EVague.Vague1 + (int)EVague.Vague1 - 1):
-                Debug.Log("Première vague !");
+                //Debug.Log("Première vague !");
+                c_Vagues[0].enabled = true;
                 break;
             case ((int)EVague.Vague2 + (int)EVague.Vague2 - 1):
-                Debug.Log("Deuxième vague !");
+                //Debug.Log("Deuxième vague !");
+                c_Vagues[1].enabled = true;
                 break;
             case ((int)EVague.Vague3 + (int)EVague.Vague3 - 1):
                 Debug.Log("Troisième vague !");
+                //c_Vagues[2].enabled = true;
                 break;
             case ((int)EVague.Vague4 + (int)EVague.Vague4 - 1):
                 Debug.Log("Quatrième vague !");
+                //c_Vagues[3].enabled = true;
                 break;
             case ((int)EVague.Vague5 + (int)EVague.Vague5 - 1):
                 Debug.Log("Cinquième vague !");
+                //c_Vagues[4].enabled = true;
                 break;
             case ((int)EVague.Vague6 + (int)EVague.Vague6 - 1):
                 Debug.Log("Sixième vague !");
+                //c_Vagues[5].enabled = true;
                 break;
             case ((int)EVague.Vague7 + (int)EVague.Vague7 - 1):
                 Debug.Log("Septième vague !");
+                //c_Vagues[6].enabled = true;
                 break;
             case ((int)EVague.Vague8 + (int)EVague.Vague8 - 1):
                 Debug.Log("Huitième vague !");
+                //c_Vagues[7].enabled = true;
                 break;
             case ((int)EVague.Vague9 + (int)EVague.Vague9 - 1):
                 Debug.Log("Neuvième vague !");
+                //c_Vagues[8].enabled = true;
                 break;
             case ((int)EVague.Vague10 + (int)EVague.Vague10 - 1):
                 Debug.Log("Dixième vague !");
+                //c_Vagues[9].enabled = true;
                 break;
             default:
                 break;

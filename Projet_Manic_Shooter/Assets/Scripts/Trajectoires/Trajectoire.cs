@@ -9,12 +9,16 @@ public class Trajectoire : MonoBehaviour
  * SORTIE   : La mise à jour du temps de l'objet à appliquer sur la trajectoire enfant.
 \********************************************************/
 {
+    public int n_XMax = 20;
+    public int n_YMax = 20;
+
     public Minuteur c_Minuteur = null;
     public float f_Vitesse = 1f;
     protected double d_Naissance;
     protected Vector3 v_Depart;
 
     protected double d_Temps;
+    protected float f_Delta;
     protected float f_Temps;
 
     // Start is called before the first frame update
@@ -33,8 +37,17 @@ public class Trajectoire : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (c_Minuteur.GetTemps() != d_Temps)
+            f_Delta = 1.0f;
+        else
+            f_Delta = 0.0f;
+
         d_Temps = c_Minuteur.GetTemps();
         f_Temps = (float)d_Temps - (float)d_Naissance; //Le temps actuel de l'objet.
+        if (gameObject.transform.position.x > n_XMax || gameObject.transform.position.x < - n_XMax || gameObject.transform.position.y > n_YMax || gameObject.transform.position.y < -n_YMax)
+        {
+            Destroy(gameObject);
+        }
     }
 
     protected float DegToRad(float f_Deg)

@@ -360,7 +360,6 @@ public class PlayerCharacter : MonoBehaviour
      * SORTIE   : La destruction des projectiles ennemis et les dégâts infligés aux ennemis.
     \********************************************************/
     {
-
         Explosion();
 
         NettoieEcran();

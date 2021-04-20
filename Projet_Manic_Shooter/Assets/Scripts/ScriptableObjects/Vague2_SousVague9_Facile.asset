@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5b63cd107c5334d98ed1ebcc3f1a88, type: 3}
+  m_Name: Vague2_SousVague9_Facile
+  m_EditorClassIdentifier: 
+  prefabTrajectoire: {fileID: 8158567316745228123, guid: 5a76a565b112d2c4cab8dc16bbd4e159, type: 3}
+  prefabEnnemi: {fileID: 1991311157980535073, guid: a6a4329f16a1d1f4f9d53b7fda1cb2bf, type: 3}
+  prefabMotif: {fileID: 4285055427289561602, guid: 3b7ea1211638ce243b7be8a2c0161bf7, type: 3}
+  prefabPointApparition: {fileID: 3461493320903896145, guid: b40a90a95e3946e4ea13f3b220662b88, type: 3}
+  nb_Ennemis: 1
+  f_TempsVague: 4
+  Tag: Bois

@@ -1,3 +1,20 @@
+##[0.1.0.1] - 2021-04-20
+### Ajout
+-Création de la première vague.(la vague 0)
+-Ajout du Layer Trajectoire.
+-Mise en place de la désactivation automatique des vagues.
+-Création de plusieurs points d'apparitions pour les ennemis.
+-Création de la deuxième vague. (la vague 1)
+-Ajout du système de trajectoires sur points de passages.
+-Intégration du système de trajectoires sur points de passages pour le retour dans le temps.
+-Création du préfab de l'élémentaire supérieur.
+-Création du préfab de l'élémentaire inférieur.
+-Création de la troisième vague.(la vague 2)
+### Modification
+-Révision de la structure de création des ennemis, des vagues et des sous-vagues.
+-Modification du script des ennemis pour coïncider avec le système de vague.
+-Correction de l'utilisation du deltatime.
+
 ##[0.1.0.0] - 2021-04-19
 ### Ajout
 -Préparation du mémoire.
