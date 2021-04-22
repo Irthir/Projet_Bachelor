@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3309225636593157967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3309225636593157953}
+  - component: {fileID: 3309225636593157966}
+  - component: {fileID: 3309225636593157952}
+  m_Layer: 0
+  m_Name: "CheminDiagonaleBris\xE9eOuest"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3309225636593157953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309225636593157967}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.5, y: 10.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3309225636593157966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309225636593157967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c371222d401aab34aaf30cb203f42802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  o_PointDePassage:
+  - {fileID: 7310286580734203137, guid: 89c61e71ebde4f742bfc0f5c9c4adc54, type: 3}
+  - {fileID: 3680513843582918568, guid: bf5dc91885c0c2845bca819b36973d04, type: 3}
+  - {fileID: 5084773563577666567, guid: 3295b13f4925e8c4cb44ec94bd1c1de1, type: 3}
+  f_Delai:
+  - 0
+  - 0.5
+  - 0
+  c_TrajectoireChercheCible: {fileID: 3309225636593157952}
+--- !u!114 &3309225636593157952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309225636593157967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba21b0e833041849b8aceafe1783093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  n_XMax: 20
+  n_YMax: 20
+  c_Minuteur: {fileID: 0}
+  f_Vitesse: 3
+  c_Compteur: {fileID: 0}
+  v_Cible: {x: 0, y: 0, z: 0}

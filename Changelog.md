@@ -1,3 +1,8 @@
+##[0.1.0.2] - 2021-04-21
+### Ajout
+-Quatrième Vague.
+-Contrôleur de test.
+
 ##[0.1.0.1] - 2021-04-20
 ### Ajout
 -Création de la première vague.(la vague 0)
