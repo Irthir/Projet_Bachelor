@@ -1,3 +1,7 @@
+##[0.1.0.3] - 2021-04-27
+### Ajout
+-Ajout du système de traduction par Unity https://docs.unity3d.com/Packages/com.unity.localization@0.11/manual/index.html
+
 ##[0.1.0.2] - 2021-04-21
 ### Ajout
 -Quatrième Vague.
