@@ -13,7 +13,7 @@ public class Ennemi : MonoBehaviour
     public Compteur c_Compteur = null;
     public CompteursJoueur c_CompteursJoueur = null;
 
-    public GameObject Apparence;
+    public GameObject Apparence=null;
     public GameObject Motif=null;
     public CapsuleCollider Collider;
     public int n_Vie = 10;

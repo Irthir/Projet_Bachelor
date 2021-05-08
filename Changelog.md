@@ -1,3 +1,12 @@
+##[0.1.0.4] - 2021-05-08
+### Ajout
+-Ajout du début de la rédaction du Mémoire du projet.
+-Ajout d'un menu basique.
+### Modification
+-Changement de l'apparence du Joueur.
+-Changement de l'apparence des ennemis.
+-Changement de l'apparence des tirs ennemis.
+
 ##[0.1.0.3] - 2021-04-27
 ### Ajout
 -Ajout du système de traduction par Unity https://docs.unity3d.com/Packages/com.unity.localization@0.11/manual/index.html

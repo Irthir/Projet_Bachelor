@@ -24,6 +24,13 @@ MonoBehaviour:
     - Locale-fr
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 99cf66586ea236b4ebc3a0ed1f40c923
+    m_Address: MenuText_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 98d33479653f407429db8329a9d097b3, type: 2}
   m_SchemaSet:
