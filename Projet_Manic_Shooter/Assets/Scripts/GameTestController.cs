@@ -21,6 +21,9 @@ public class GameTestController : MonoBehaviour
     {
         switch(Input.inputString)
         {
+            case "0":
+                c_Minuteur.d_Temps = 0.0f;
+                break;
             case "1":
                 c_Minuteur.d_Temps = 9.9f;
                 break;

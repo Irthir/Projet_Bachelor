@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49aa3a716d5388541817b45dd6dc52b7, type: 3}
+  m_Name: Dialogue1
+  m_EditorClassIdentifier: 
+  t_Dialogues:
+  - p_Personnage1:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Meraili
+    p_Personnage2:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Auteur
+    s_DialogueFR: Ceci est du texte1
+    s_DialogueEN: This is some text1
+    b_Personnage1Actif: 1
+  - p_Personnage1:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Meraili
+    p_Personnage2:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Auteur
+    s_DialogueFR: Ceci est du texte2
+    s_DialogueEN: This is some text2
+    b_Personnage1Actif: 0
+  - p_Personnage1:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Meraili
+    p_Personnage2:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Auteur
+    s_DialogueFR: Ceci est du texte3
+    s_DialogueEN: This is some text3
+    b_Personnage1Actif: 1
+  - p_Personnage1:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Meraili
+    p_Personnage2:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Auteur
+    s_DialogueFR: Ceci est du texte4
+    s_DialogueEN: This is some text4
+    b_Personnage1Actif: 1
+  - p_Personnage1:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Meraili
+    p_Personnage2:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Auteur
+    s_DialogueFR: Ceci est du texte5
+    s_DialogueEN: This is some text5
+    b_Personnage1Actif: 0
+  - p_Personnage1:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Meraili
+    p_Personnage2:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Auteur
+    s_DialogueFR: Ceci est du texte6
+    s_DialogueEN: This is some text6
+    b_Personnage1Actif: 0
+  - p_Personnage1:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Meraili
+    p_Personnage2:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Auteur
+    s_DialogueFR: Ceci est du texte7
+    s_DialogueEN: This is some text7
+    b_Personnage1Actif: 1
+  - p_Personnage1:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Meraili
+    p_Personnage2:
+      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
+      s_Nom: Auteur
+    s_DialogueFR: Ceci est du texte8
+    s_DialogueEN: This is some text8
+    b_Personnage1Actif: 0

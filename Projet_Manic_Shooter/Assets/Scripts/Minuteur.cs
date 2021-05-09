@@ -21,7 +21,7 @@ public class Minuteur : MonoBehaviour
         {
             o_UIPause = GameObject.Find("PanelPause");
         }
-        Play();
+        //Play();
     }
 
     // Update is called once per frame
@@ -31,6 +31,7 @@ public class Minuteur : MonoBehaviour
         {
             d_Temps += Time.deltaTime;
         }
+
     }
 
     public double GetTemps()

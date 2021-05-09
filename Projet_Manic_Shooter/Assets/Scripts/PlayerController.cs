@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public float f_AugmentationVitesseTir = 5.0f;
     public float f_VitesseTir = 20.0f;
 
+    public MeshRenderer mr_Collision = null;
+
     //Functions
 
     // Start is called before the first frame update
@@ -110,6 +112,8 @@ public class PlayerController : MonoBehaviour
                 c_Character.f_TauxTir = f_TauxTir - f_AugmentationTauxTir;
                 c_Character.f_VitesseTir = f_VitesseTir + f_AugmentationVitesseTir;
                 c_Character.f_Vitesse = f_Vitesse - f_Ralentissement;
+                if (mr_Collision != null)
+                    mr_Collision.enabled = true;
             }
 
             if (Input.GetButtonUp("Concentration"))
@@ -117,6 +121,8 @@ public class PlayerController : MonoBehaviour
                 c_Character.f_TauxTir = f_TauxTir;
                 c_Character.f_VitesseTir = f_VitesseTir;
                 c_Character.f_Vitesse = f_Vitesse;
+                if (mr_Collision != null)
+                    mr_Collision.enabled = false;
             }
 
             if (Input.GetButtonDown("Bombe"))

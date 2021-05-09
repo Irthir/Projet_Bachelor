@@ -1,3 +1,15 @@
+##[0.1.0.5] - 2021-05-09
+## Ajout
+-Retrait de l'affichage de la sphère de collision quand le personnage n'est pas en concentration.
+-Création du système de dialogue et traduction.
+### Modification
+-Apparence du personnage joueur.
+-Correction d'un bug majeur quant aux lumières forçant à reprendre le projet à l'état du début de journée.
+-Réparation de l'interface utilisateur pour différentes tailles d'écrans.
+### Recherche
+-Il est impossible de changer la langue dans les options avec Unity, car la langue est automatiquement récupérée depuis le système.
+
+
 ##[0.1.0.4] - 2021-05-08
 ### Ajout
 -Ajout du début de la rédaction du Mémoire du projet.

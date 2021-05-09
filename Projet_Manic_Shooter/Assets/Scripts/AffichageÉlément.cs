@@ -30,6 +30,6 @@ public class AffichageÉlément : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //  t_Text.text = "Élément : " + o_Joueur.tag;
+        t_Text.text = "Élément : " + o_Joueur.tag;
     }
 }
