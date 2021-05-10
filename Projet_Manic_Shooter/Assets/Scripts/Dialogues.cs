@@ -5,6 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Dialogues : MonoBehaviour
+/***************************************************************************\
+ * BUT      : Gérer l'affichage des dialogues à l'écran.
+ * ENTREE   : Le ScriptableObject qui stoque les informations des dialogues.
+ * SORTIE   : L'affichage des dialogues passés sur input du joueur.
+\***************************************************************************/
 {
     public GameObject UI_Dialogue = null;
     public Text t_Text = null;
@@ -18,6 +23,8 @@ public class Dialogues : MonoBehaviour
     public RectTransform rt_Personnage2 = null;
 
     public DialogueScriptableObject so_Dialogues;
+    public PlayerController s_PlayerController = null;
+    public Minuteur s_Minuteur = null;
 
     [SerializeField]
     protected float f_TempsParLettre = 0.02f;
@@ -40,18 +47,24 @@ public class Dialogues : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        Debug.Log(CultureInfo.CurrentCulture); //retourne fr-FR ou en-EN;
+        //Debug.Log(CultureInfo.CurrentCulture); //retourne fr-FR ou en-EN;
     }
 
     protected virtual void Update()
     {
         if (Input.GetButtonDown("Fire1") && !b_Coroutine)
         {
-            Debug.Log(Application.systemLanguage); //retourne French ou English;
-            AffichageDialogue();
             if (n_Index<so_Dialogues.t_Dialogues.Length-1)
             {
                 n_Index++;
+                //Debug.Log(Application.systemLanguage); //retourne French ou English;
+                AffichageDialogue();
+            }
+            else
+            {
+                UI_Dialogue.SetActive(false);
+                s_PlayerController.enabled = true;
+                s_Minuteur.Play();
             }
         }
     }

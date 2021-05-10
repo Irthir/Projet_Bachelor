@@ -1,5 +1,11 @@
+##[0.1.0.6] - 2021-05-10
+### Ajout
+-Inclusion du système de dialogue au début du niveau 1.
+-Powerpoint de présentation du projet.
+-Planning révisé datant du 10/05/2021.
+
 ##[0.1.0.5] - 2021-05-09
-## Ajout
+### Ajout
 -Retrait de l'affichage de la sphère de collision quand le personnage n'est pas en concentration.
 -Création du système de dialogue et traduction.
 ### Modification

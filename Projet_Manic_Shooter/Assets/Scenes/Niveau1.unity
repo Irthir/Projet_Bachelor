@@ -295,7 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   d_Temps: 0
   b_Actif: 0
-  o_UIPause: {fileID: 0}
+  o_UIPause: {fileID: 119916087}
 --- !u!4 &33279473
 Transform:
   m_ObjectHideFlags: 0
@@ -824,7 +824,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214254941}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: faf4ed467f23316429089a89028eb458, type: 3}
   m_Name: 
@@ -3126,6 +3126,8 @@ MonoBehaviour:
   rt_Personnage1: {fileID: 998381592}
   rt_Personnage2: {fileID: 2123995877}
   so_Dialogues: {fileID: 11400000, guid: 1e3557acd03fe0c41ae03cecbd037f2e, type: 2}
+  s_PlayerController: {fileID: 214254947}
+  s_Minuteur: {fileID: 33279472}
   f_TempsParLettre: 0.02
 --- !u!4 &1517329597
 Transform:
