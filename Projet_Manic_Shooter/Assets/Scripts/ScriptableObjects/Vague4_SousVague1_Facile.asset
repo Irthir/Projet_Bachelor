@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5b63cd107c5334d98ed1ebcc3f1a88, type: 3}
+  m_Name: Vague4_SousVague1_Facile
+  m_EditorClassIdentifier: 
+  prefabTrajectoire: {fileID: 7478826372525378910, guid: d1efbe64239fd384e9c9e8ac1e470a0f, type: 3}
+  prefabEnnemi: {fileID: 6403212424856455343, guid: a5793ac8b45c6a54fb09f367e2b026a6, type: 3}
+  prefabMotif: {fileID: 4285055427289561602, guid: 3b7ea1211638ce243b7be8a2c0161bf7, type: 3}
+  prefabPointApparition: {fileID: 7310286580734203137, guid: 89c61e71ebde4f742bfc0f5c9c4adc54, type: 3}
+  nb_Ennemis: 1
+  f_TempsVague: 1
+  Tag: 

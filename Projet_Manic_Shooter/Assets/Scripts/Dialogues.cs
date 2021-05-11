@@ -48,6 +48,7 @@ public class Dialogues : MonoBehaviour
     protected virtual void Start()
     {
         //Debug.Log(CultureInfo.CurrentCulture); //retourne fr-FR ou en-EN;
+        AffichageDialogue();
     }
 
     protected virtual void Update()

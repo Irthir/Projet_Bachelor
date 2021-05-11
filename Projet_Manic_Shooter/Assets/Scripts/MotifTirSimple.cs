@@ -28,7 +28,7 @@ public class MotifTirSimple : Motif
             Instance.AddComponent<TrajectoireDroite>();
             Instance.GetComponent<TrajectoireDroite>().f_Angle = f_AngleSeparation;
             Instance.GetComponent<TrajectoireDroite>().f_Vitesse = f_Vitesse;
-            Instance.tag = gameObject.tag;
+            Instance.tag = gameObject.transform.parent.parent.tag; ;
             
             f_AngleSeparation += f_AngleOffset;
         }

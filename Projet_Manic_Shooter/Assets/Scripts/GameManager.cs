@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         c_Character.NettoieEcran();
         c_CompteurJoueur.SetBombe(4.0f);
         c_Character.b_Invincible = true;
+        c_Character.d_MomentInvincible = c_Minuteur.GetTemps();
     }
 
     #region code pour le singleton

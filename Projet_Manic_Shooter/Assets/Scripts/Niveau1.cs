@@ -57,8 +57,8 @@ public class Niveau1 : MonoBehaviour
                 c_Vagues[2].enabled = true;
                 break;
             case ((int)EVague.Vague4 + (int)EVague.Vague4 - 1):
-                Debug.Log("Quatrième vague !");
-                //c_Vagues[3].enabled = true;
+                //Debug.Log("Quatrième vague !");
+                c_Vagues[3].enabled = true;
                 break;
             case ((int)EVague.Vague5 + (int)EVague.Vague5 - 1):
                 Debug.Log("Cinquième vague !");

@@ -36,7 +36,7 @@ public class PlayerCharacter : MonoBehaviour
 
     public bool b_Invincible = false;
     public float f_TempsInvincible = 2.0f;
-    private double d_MomentInvincible = 0.0f;
+    public double d_MomentInvincible = 0.0f;
 
     public float f_Vitesse = 0.0f;
     public float f_VitesseTir = 0.0f;
@@ -330,6 +330,10 @@ public class PlayerCharacter : MonoBehaviour
         else
         {
             Debug.Log("Plus de bombe restante.");
+            Debug.Log("Compte bombes : " + c_CompteurJoueur.f_Bombe);
+            Debug.Log("Invincible ? : " + b_Invincible);
+            Debug.Log("Bombe possible ? : " + b_BombePossible);
+            Debug.Log("Temps ? : " + c_Minuteur.GetTemps());
         }
     }
 

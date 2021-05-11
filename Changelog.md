@@ -1,3 +1,12 @@
+##[0.1.0.7] - 2021-05-11
+### Ajout
+-Début de la mise en place de la pluie de flèches.
+### Modification
+-Correction d'un bug qui ne préparait pas la fin de l'invincibilité lorsque le joueur réapparait.
+-Correction d'un bug de tag sur les tirs ennemis.
+### Recherche
+-Passage blanc de la présentation du projet en l'état.
+
 ##[0.1.0.6] - 2021-05-10
 ### Ajout
 -Inclusion du système de dialogue au début du niveau 1.

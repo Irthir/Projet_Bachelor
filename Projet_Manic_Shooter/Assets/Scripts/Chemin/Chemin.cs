@@ -10,11 +10,11 @@ public class Chemin : MonoBehaviour
 \********************************************************/
 {
     [SerializeField]
-    GameObject[] o_PointDePassage;
+    public GameObject[] o_PointDePassage;
     [SerializeField]
-    float[] f_Delai;
+    public float[] f_Delai;
     [SerializeField]
-    TrajectoireChercheCible c_TrajectoireChercheCible;
+    TrajectoireChercheCible c_TrajectoireChercheCible = null;
     int n_Etat = 0;
     Minuteur c_Minuteur=null;
 
@@ -46,6 +46,11 @@ public class Chemin : MonoBehaviour
         for (int i = 0; i < n_EtatsPrecedents.Length; i++)
         {
             n_EtatsPrecedents[i] = n_Etat;
+        }
+        
+        if (c_TrajectoireChercheCible == null)
+        {
+            c_TrajectoireChercheCible = gameObject.GetComponent<TrajectoireChercheCible>();
         }
     }
 
@@ -89,6 +94,8 @@ public class Chemin : MonoBehaviour
     //BUT : Changer la cible après l'attente prévue.
     {
         yield return new WaitForSeconds(f_Delai);
+
+        Debug.Log(o_PointDePassage[n_Etat]);
 
         c_TrajectoireChercheCible.v_Cible = o_PointDePassage[n_Etat].transform.position;
     }
