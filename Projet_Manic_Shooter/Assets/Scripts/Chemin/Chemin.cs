@@ -52,6 +52,11 @@ public class Chemin : MonoBehaviour
         {
             c_TrajectoireChercheCible = gameObject.GetComponent<TrajectoireChercheCible>();
         }
+
+        /*foreach (GameObject go in o_PointDePassage)
+        {
+            Debug.Log(go.name);
+        } */
     }
 
     // Update is called once per frame
@@ -95,7 +100,9 @@ public class Chemin : MonoBehaviour
     {
         yield return new WaitForSeconds(f_Delai);
 
-        Debug.Log(o_PointDePassage[n_Etat]);
+        //Debug.Log("Etat : " + n_Etat);
+
+        //Debug.Log(o_PointDePassage[n_Etat]);
 
         c_TrajectoireChercheCible.v_Cible = o_PointDePassage[n_Etat].transform.position;
     }

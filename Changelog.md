@@ -1,3 +1,7 @@
+##[0.1.0.8] - 2021-05-12
+### Modification
+-Correction de la pluie de flèches.
+
 ##[0.1.0.7] - 2021-05-11
 ### Ajout
 -Début de la mise en place de la pluie de flèches.

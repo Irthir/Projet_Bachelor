@@ -18,4 +18,4 @@ MonoBehaviour:
   prefabPointApparition: {fileID: 7310286580734203137, guid: 89c61e71ebde4f742bfc0f5c9c4adc54, type: 3}
   nb_Ennemis: 1
   f_TempsVague: 1
-  Tag: 
+  Tag: Bois

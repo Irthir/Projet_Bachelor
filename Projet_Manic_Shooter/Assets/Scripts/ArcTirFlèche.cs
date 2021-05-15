@@ -13,6 +13,8 @@ public class ArcTirFlèche : MonoBehaviour
     
     public GameObject[] go_Flèches;
 
+    public float f_VitesseFleches = 20.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +23,11 @@ public class ArcTirFlèche : MonoBehaviour
         {
             GameObject Fleche = Instantiate(go_Flèches[i], st_PointsDePassage[0].go_PointsDePassage[i].transform.position, Quaternion.identity);
             Chemin c_Chemin = Fleche.GetComponent<Chemin>();
+            Trajectoire c_Trajectoire = Fleche.GetComponent<Trajectoire>();
 
             c_Chemin.o_PointDePassage = new GameObject[st_PointsDePassage.Length-1];
             c_Chemin.f_Delai = new float[st_PointsDePassage.Length-1];
+            c_Trajectoire.f_Vitesse = f_VitesseFleches;
 
             for (int j = 1; j < st_PointsDePassage.Length; j++)
             {
