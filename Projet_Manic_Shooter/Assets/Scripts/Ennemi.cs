@@ -187,4 +187,10 @@ public class Ennemi : MonoBehaviour
             }
         }
     }
+
+    void OnDestroy()
+    //BUT : Gérer la destruction de l'ennemi.
+    {
+        c_Compteur.MortEnnemi(gameObject);
+    }
 }

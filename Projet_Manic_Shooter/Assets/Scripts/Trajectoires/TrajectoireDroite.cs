@@ -31,12 +31,12 @@ public class TrajectoireDroite : Trajectoire
     }
 
     Vector3 MouvementDroite(float f_Angle,Vector3 v_Origine,float f_Vitesse, float f_Temps)
+    //BUT : Calculer la position de l'objet sur une trajectoire droite à partir de son origine et sa vitesse.
     {
         Vector3 vecPosition;
 
         vecPosition.x = f_Temps * f_Vitesse * Mathf.Cos(f_Angle) + v_Origine.x;
         vecPosition.y = f_Temps * f_Vitesse * Mathf.Sin(f_Angle) + v_Origine.y;
-
         vecPosition.z = 0.0f;
 
         return vecPosition;

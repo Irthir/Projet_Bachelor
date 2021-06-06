@@ -21,7 +21,6 @@ public class Minuteur : MonoBehaviour
         {
             o_UIPause = GameObject.Find("PanelPause");
         }
-        //Play();
     }
 
     // Update is called once per frame
@@ -31,29 +30,32 @@ public class Minuteur : MonoBehaviour
         {
             d_Temps += Time.deltaTime;
         }
-
     }
 
     public double GetTemps()
+    //BUT : Renvoyer le temps actuel.
     {
         return d_Temps;
     }
 
     public void SetTemps(double Temps)
+    //BUT : Mettre à jour le temps actuel.
     {
         d_Temps = Temps;
     }
 
     public void Pause()
+    //BUT : Mettre le compteur en pause.
     {
         b_Actif = false;
-        o_UIPause.SetActive(true);
+        o_UIPause.SetActive(true); //Affichage de l'interface de pause
     }
 
     public void Play()
+    //BUT : Remettre en marche le compteur.
     {
         b_Actif = true;
-        o_UIPause.SetActive(false);
+        o_UIPause.SetActive(false); //Masquage de l'interface de pause
     }
 
     #region code pour le singleton

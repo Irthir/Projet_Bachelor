@@ -1,3 +1,15 @@
+##[0.1.1.1] - 2021-06-06
+### Ajout
+-Quasi finalisation du mémoire et ajout de commentaires dans le code.
+
+##[0.1.1.0] - 2021-05-24
+### Modification
+-Correction des proportions de l'interface pour l'adaptation à la taille de l'écran.
+
+##[0.1.0.9] - 2021-05-18
+### Modification
+-Correction d'un soucis de référencement des ennemis détruis dans le compteur du GameManager.
+
 ##[0.1.0.8] - 2021-05-12
 ### Modification
 -Correction de la pluie de flèches.

@@ -27,6 +27,7 @@ public class TrajectoireCirculaire : Trajectoire
     }
 
     Vector3 MouvementCercle(float f_Rayon, Vector3 v_Centre, float f_Vitesse, float f_Temps, float f_Angle)
+    //BUT : Calculer la position de l'objet sur sa trajectoire circulaire à partir d'un centre, son rayon, sa vitesse et d'un angle de décalage pour les rotation non circulaires.
     {
         Vector3 vecPosition;
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trajectoire : MonoBehaviour
+public abstract class Trajectoire : MonoBehaviour
 /********************************************************\
  * BUT      : Réaliser une classe mère pour toutes les trajectoires.
  * ENTREE   : La position et la date de naissance de l'objet.
