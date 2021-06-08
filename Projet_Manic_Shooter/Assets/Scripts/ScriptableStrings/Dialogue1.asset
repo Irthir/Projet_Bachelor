@@ -19,16 +19,19 @@ MonoBehaviour:
     p_Personnage2:
       sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
       s_Nom: Auteur
-    s_DialogueFR: Ceci est du texte1
+    s_DialogueFR: "Nous sommes sur le  continent monde de Treskri, \xE0 l'or\xE9e
+      de la for\xEAt elfique, six mois apr\xE8s la fin de la grande guerre ayant
+      oppos\xE9e les Royaumes et l'Empire."
     s_DialogueEN: This is some text1
-    b_Personnage1Actif: 1
+    b_Personnage1Actif: 0
   - p_Personnage1:
       sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
       s_Nom: Meraili
     p_Personnage2:
       sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
       s_Nom: Auteur
-    s_DialogueFR: Ceci est du texte2
+    s_DialogueFR: "Notre h\xE9ro\xEFne, la magicienne Meraili Racstel, est en qu\xEAte
+      de d\xE9choir les dieux ren\xE9gats repr\xE9sentant une menace pour les Royaumes."
     s_DialogueEN: This is some text2
     b_Personnage1Actif: 0
   - p_Personnage1:
@@ -37,7 +40,8 @@ MonoBehaviour:
     p_Personnage2:
       sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
       s_Nom: Auteur
-    s_DialogueFR: Ceci est du texte3
+    s_DialogueFR: "a for\xEAt est calme, je ferais mieux de me d\xE9p\xEAcher de
+      rejoindre Asph\xE8le."
     s_DialogueEN: This is some text3
     b_Personnage1Actif: 1
   - p_Personnage1:
@@ -46,35 +50,18 @@ MonoBehaviour:
     p_Personnage2:
       sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
       s_Nom: Auteur
-    s_DialogueFR: Ceci est du texte4
+    s_DialogueFR: "Cependant l'approche de notre h\xE9ro\xEFne dans ces sous-bois
+      a attir\xE9 de nombreux \xE9l\xE9mentaires assoiff\xE9s de magie."
     s_DialogueEN: This is some text4
-    b_Personnage1Actif: 1
+    b_Personnage1Actif: 0
   - p_Personnage1:
       sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
       s_Nom: Meraili
     p_Personnage2:
       sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
       s_Nom: Auteur
-    s_DialogueFR: Ceci est du texte5
+    s_DialogueFR: "Fiente de... J'oubliais ces g\xEAneurs."
     s_DialogueEN: This is some text5
-    b_Personnage1Actif: 0
-  - p_Personnage1:
-      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
-      s_Nom: Meraili
-    p_Personnage2:
-      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
-      s_Nom: Auteur
-    s_DialogueFR: Ceci est du texte6
-    s_DialogueEN: This is some text6
-    b_Personnage1Actif: 0
-  - p_Personnage1:
-      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
-      s_Nom: Meraili
-    p_Personnage2:
-      sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
-      s_Nom: Auteur
-    s_DialogueFR: Ceci est du texte7
-    s_DialogueEN: This is some text7
     b_Personnage1Actif: 1
   - p_Personnage1:
       sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
@@ -82,6 +69,7 @@ MonoBehaviour:
     p_Personnage2:
       sp_Sprite: {fileID: 21300000, guid: adaaf0eb512bcd4479ba88ef8ef989b3, type: 3}
       s_Nom: Auteur
-    s_DialogueFR: Ceci est du texte8
-    s_DialogueEN: This is some text8
+    s_DialogueFR: "Toujours sur le qui-vive elle se pr\xE9pare au combat et \xE0
+      se frayer un passage jusqu'\xE0 son point de rendez-vous avec son acolyte."
+    s_DialogueEN: This is some text6
     b_Personnage1Actif: 0
