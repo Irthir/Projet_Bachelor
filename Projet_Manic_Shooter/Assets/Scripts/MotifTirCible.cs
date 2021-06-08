@@ -35,11 +35,7 @@ public class MotifTirCible : Motif
     }
 
     float AngleCible()
-    /********************************************************\
-     * BUT      : Calculer l'angle 
-     * ENTREE   : Le nombre de tir et l'angle entre ces derniers.
-     * SORTIE   : Les tirs partant en ligne droite depuis leur point d'apparition.
-    \********************************************************/
+    //BUT : Calculer l'angle de tir entre le tireur et la cible.
     {
         float f_x = t_Cible.position.x - transform.position.x;
         float f_y = t_Cible.position.y - transform.position.y;

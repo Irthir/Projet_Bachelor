@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Motif : MonoBehaviour
+public abstract class Motif : MonoBehaviour
 /********************************************************\
  * BUT      : Classe mère des motifs des attaques ennemies.
  * ENTREE   : La date de naissance, le minuteur et la position de départ.
@@ -12,7 +12,7 @@ public class Motif : MonoBehaviour
     public Minuteur c_Minuteur = null;
     public float f_Vitesse = 1f;
     protected double d_Naissance;
-    protected Vector3 v_Depart;
+    //protected Vector3 v_Depart;
 
     public float f_Frequence;
     protected double d_Temps;
@@ -30,7 +30,7 @@ public class Motif : MonoBehaviour
 
         d_Naissance = c_Minuteur.GetTemps();
 
-        v_Depart = transform.position;
+        //v_Depart = transform.position;
 
         f_LastShot = f_Temps;
     }
